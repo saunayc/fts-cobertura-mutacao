@@ -1,0 +1,33 @@
+id,fonte,requisito,tecnica
+ARW-R01,guide.rst#Creation,"utcnow(), now() e now(tz) retornam o instante atual no fuso indicado (UTC por padrão)",PE
+ARW-R02,guide.rst#Creation,get(int|float) cria a partir de timestamp em UTC; string numérica também é aceita por fromtimestamp,PE + AVL (0 / negativo / fração)
+ARW-R03,guide.rst#Creation,get(datetime) ingênuo vira UTC; get(datetime; tz) substitui o fuso; datetime consciente preserva o fuso,PE
+ARW-R04,guide.rst#Creation,get(str; formato) interpreta segundo os tokens; get(str; [formatos]) tenta cada formato,PE
+ARW-R05,guide.rst#Creation,get(str; formato) encontra a data dentro de um texto,PE
+ARW-R06,guide.rst#Creation,Strings ISO 8601 (estendidas e básicas) são reconhecidas sem formato,PE
+ARW-R07,guide.rst#Creation,"get(ano, mês, dia) e Arrow(...) instanciam diretamente; get() sem argumentos = agora em UTC",PE
+ARW-R08,api (get),"get aceita Arrow (cópia), date, struct_time, tupla ISO (ano, semana, dia) e tzinfo",PE
+ARW-R09,guide.rst#Properties,"datetime, naive, tzinfo, atributos (year…), date(), time(), timestamp(), int_timestamp e float_timestamp",PE
+ARW-R10,guide.rst#Replace & Shift,replace altera atributos absolutos e pode trocar o fuso sem converter,PE
+ARW-R11,guide.rst#Replace & Shift,"shift desloca valores relativos (years…microseconds, weeks, quarters) inclusive negativos e weekday",PE + AVL (fim de mês / ano bissexto)
+ARW-R12,guide.rst#Replace & Shift,ambiguous e fold identificam e escolhem o instante em horários ambíguos de transição de horário de verão,PE (hora ambígua / não ambígua)
+ARW-R13,guide.rst#Format,format(tokens) produz a saída descrita na tabela de tokens,PE + AVL (1 dígito / 2 dígitos)
+ARW-R14,guide.rst#Built-in Formats,Constantes FORMAT_* produzem os formatos padronizados,PE
+ARW-R15,guide.rst#Escaping Formats,Colchetes escapam tokens/frases e expressões regulares na interpretação e formatação,PE
+ARW-R16,guide.rst#Punctuation,"Data cercada por um sinal de pontuação é aceita; mais de um sinal gera erro",PE (válida / inválida)
+ARW-R17,guide.rst#Redundant Whitespace,normalize_whitespace=True normaliza espaços redundantes,PE
+ARW-R18,guide.rst#Convert,to(tz) converte por nome; aceita tzinfo e deslocamento '+HH:MM',PE
+ARW-R19,guide.rst#Humanize,humanize relativo a outro instante; only_distance; granularidade simples e múltipla,PE + AVL (limiares de unidade)
+ARW-R20,guide.rst#Humanize,humanize em outras localidades,PE
+ARW-R21,guide.rst#Dehumanize,dehumanize desloca para passado/futuro; texto inválido gera erro,PE
+ARW-R22,guide.rst#Ranges & Spans,"span, floor e ceil para cada unidade; week_start; count; bounds",PE + AVL (limites do intervalo)
+ARW-R23,guide.rst#Ranges & Spans,span_range e range iteram intervalos/pontos; limit; tz,PE + AVL (limit 0 / 1)
+ARW-R24,api (interval),interval agrupa intervalos de tamanho fixo; bounds e exact,PE
+ARW-R25,api (is_between),is_between respeita os quatro tipos de limite,AVL (instante igual ao início/fim)
+ARW-R26,guide.rst#Factories,ArrowFactory cria instâncias de tipos derivados de Arrow,PE
+ARW-R27,api (Arrow),"Construtores alternativos: fromdatetime, fromdate, fromordinal, strptime, utcfromtimestamp",PE
+ARW-R28,api (Arrow),"Aritmética (+/- timedelta, diferença entre Arrows) e comparações",PE
+ARW-R29,api (Arrow),"Interoperabilidade com datetime: isoformat, for_json, weekday, isoweekday, isocalendar, ctime, strftime, toordinal, utcoffset, dst, timetuple",PE
+ARW-R30,api (get/parser),Entradas inválidas (formato não casa; valor fora do intervalo; tipo não suportado; fuso inexistente) geram erro,PE (classes inválidas)
+ARW-R31,guide.rst#Supported Tokens,"Tokens de interpretação: X (timestamp), x (ms/µs), W (semana ISO), DDDD (dia do ano), ZZZ (nome do fuso), S (subsegundos com arredondamento)",PE + AVL
+ARW-R32,guide.rst#Supported Tokens,Nomes de mês/dia e AM/PM localizados na interpretação e formatação,PE

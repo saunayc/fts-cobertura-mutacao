@@ -1,0 +1,86 @@
+id,biblioteca,modulo,escopo,tipo,linhas,n_comandos,codigo
+HUM-T001,humanize,humanize/filesize.py,naturalsize,L,108,1,        exp += 1
+HUM-T002,humanize,humanize/i18n.py,_get_default_locale_path,L,47,1,        return None
+HUM-T003,humanize,humanize/i18n.py,activate,L,86-90,2,"        msg = (
+            ""Humanize cannot determinate the default location of the 'locale' folder. ""
+            ""You need to pass the path explicitly.""
+        )
+        raise FileNotFoundError(msg)"
+HUM-T004,humanize,humanize/number.py,_format_not_finite,L,83-91,8,"    import math
+
+    if math.isnan(value):
+        return ""NaN""
+    if math.isinf(value) and value < 0:
+        return ""-Inf""
+    if math.isinf(value) and value > 0:
+        return ""+Inf""
+    return """""
+HUM-T005,humanize,humanize/number.py,ordinal,L,135,1,            return _format_not_finite(float(value))
+HUM-T006,humanize,humanize/number.py,intcomma,L,186,1,                return _format_not_finite(float(value))
+HUM-T007,humanize,humanize/number.py,intcomma,L,193,1,                return _format_not_finite(float(value))
+HUM-T008,humanize,humanize/number.py,intword,L,263,1,            return _format_not_finite(float(value))
+HUM-T009,humanize,humanize/number.py,intword,L,292-293,2,"        ordinal += 1
+        rounded_value = 1.0"
+HUM-T010,humanize,humanize/number.py,apnumber,L,334,1,            return _format_not_finite(float(value))
+HUM-T011,humanize,humanize/number.py,fractional,L,387,1,            return _format_not_finite(number)
+HUM-T012,humanize,humanize/number.py,scientific,L,450,1,            return _format_not_finite(value)
+HUM-T013,humanize,humanize/number.py,clamp,L,515,1,        return _format_not_finite(value)
+HUM-T014,humanize,humanize/number.py,clamp,L,532-536,2,"    msg = (
+        ""Invalid format. Must be either a valid formatting string, or a function ""
+        ""that accepts value and returns a string.""
+    )
+    raise ValueError(msg)"
+HUM-T015,humanize,humanize/number.py,metric,L,586,1,        return _format_not_finite(value)
+HUM-T016,humanize,humanize/number.py,metric,L,597-600,4,"        exponent += 1
+        new_bucket = exponent // 3 * 3
+        value /= 10 ** (new_bucket - old_bucket)
+        digits = int(max(0, precision - exponent % 3 - 1))"
+HUM-T017,humanize,humanize/number.py,metric,L,607,1,"        ordinal_ = """""
+HUM-T018,humanize,humanize/number.py,metric,L,610,1,"        space = """""
+HUM-T019,humanize,humanize/time.py,Unit.__lt__,L,46,1,        return NotImplemented
+HUM-T020,humanize,humanize/time.py,naturaldelta,L,202,1,"                return _(""an hour"")"
+HUM-T021,humanize,humanize/time.py,naturaldelta,L,212,1,"                return _(""a day"")"
+HUM-T022,humanize,humanize/time.py,naturaldelta,L,221,1,"            return _ngettext(""%d day"", ""%d days"", days) % days"
+HUM-T023,humanize,humanize/time.py,naturaldelta,L,226-232,5,"        if num_months == 1:
+            return _(""a month"")
+
+        if num_months == 12:
+            return _(""a year"")
+
+        return _ngettext(""%d month"", ""%d months"", num_months) % num_months"
+HUM-T024,humanize,humanize/time.py,naturaldelta,L,239,1,"            return _ngettext(""1 year, %d day"", ""1 year, %d days"", days) % days"
+HUM-T025,humanize,humanize/time.py,naturaldelta,L,245-249,4,"            if num_months == 12:
+                years += 1
+                return _ngettext(""%d year"", ""%d years"", years) % years
+
+            return ("
+HUM-T026,humanize,humanize/time.py,naturaldelta,L,256-257,2,"    years = round(delta.days / 365)
+    return _ngettext(""%d year"", ""%d years"", years).replace(""%d"", ""%s"") % intcomma(years)"
+HUM-T027,humanize,humanize/time.py,naturalday,L,339,1,            today = dt.datetime.now(value.tzinfo).date()
+HUM-T028,humanize,humanize/time.py,naturalday,L,346-348,2,"    except (OverflowError, ValueError):
+        # Date arguments out of range
+        return str(value)"
+HUM-T029,humanize,humanize/time.py,naturaldate,L,370,1,            today = dt.datetime.now(value.tzinfo).date()
+HUM-T030,humanize,humanize/time.py,naturaldate,L,374-379,4,"    except AttributeError:
+        # Passed value wasn't date-ish
+        return str(value)
+    except (OverflowError, ValueError):
+        # Date arguments out of range
+        return str(value)"
+HUM-T031,humanize,humanize/time.py,_suitable_minimum_unit,L,454-455,2,"        msg = ""Minimum unit is suppressed and no suitable replacement was found""
+        raise ValueError(msg)"
+HUM-T032,humanize,humanize/time.py,precisedelta,L,621-622,2,"        msecs -= 1_000
+        secs += 1"
+HUM-T033,humanize,humanize/time.py,precisedelta,L,624-625,2,"        secs -= 60
+        minutes += 1"
+HUM-T034,humanize,humanize/time.py,precisedelta,L,627-628,2,"        minutes -= 60
+        hours += 1"
+HUM-T035,humanize,humanize/time.py,precisedelta,L,630-631,2,"        hours -= 24
+        days += 1"
+HUM-T036,humanize,humanize/time.py,precisedelta,L,635-636,2,"        days -= 31
+        months += 1"
+HUM-T037,humanize,humanize/time.py,precisedelta,L,638-639,2,"        months -= 12
+        years += 1"
+HUM-T038,humanize,humanize/time.py,_suppress_lower_units,D,468->473,0,    for unit in Unit:    # desvio não exercitado -> linha 473
+HUM-T039,humanize,humanize/time.py,precisedelta,D,655->674,0,"    for unit, fmt in zip(reversed(Unit), fmts):    # desvio não exercitado -> linha 674"
+HUM-T040,humanize,humanize/time.py,precisedelta,D,663->665,0,                if math.modf(fmt_value)[0] == 0:    # desvio não exercitado -> linha 665

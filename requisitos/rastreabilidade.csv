@@ -1,0 +1,87 @@
+biblioteca,requisito,tecnica,n_testes,testes
+tinydb,TDB-R01,PE (documento válido),1,test_tinydb_funcional.py::test_insert_retorna_id
+tinydb,TDB-R02,PE (tabela vazia / não vazia),2,test_tinydb_funcional.py::test_all_e_iter_tabela_vazia | test_tinydb_funcional.py::test_all_e_iter_tabela_com_dados
+tinydb,TDB-R03,PE + AVL (valor no limite e ±1),2,test_tinydb_funcional.py::test_search_operadores_comparacao | test_tinydb_funcional.py::test_search_campo_ausente_nao_casa
+tinydb,TDB-R04,PE,1,test_tinydb_funcional.py::test_update_com_query
+tinydb,TDB-R05,PE,1,test_tinydb_funcional.py::test_remove_com_query
+tinydb,TDB-R06,PE,1,test_tinydb_funcional.py::test_truncate
+tinydb,TDB-R07,PE,2,test_tinydb_funcional.py::test_campos_aninhados | test_tinydb_funcional.py::test_campo_com_nome_invalido_por_indice
+tinydb,TDB-R08,PE,1,test_tinydb_funcional.py::test_where_equivale_a_query
+tinydb,TDB-R09,PE,1,test_tinydb_funcional.py::test_map_transforma_valor
+tinydb,TDB-R10,PE (presente / ausente),1,test_tinydb_funcional.py::test_exists
+tinydb,TDB-R11,PE (casa total / parcial / flag),4,test_tinydb_funcional.py::test_matches_valor_inteiro | test_tinydb_funcional.py::test_matches_flags_e_inicio | test_tinydb_funcional.py::test_matches_com_flag | test_tinydb_funcional.py::test_matches_flag_apos_consulta_sem_flag
+tinydb,TDB-R12,PE,1,test_tinydb_funcional.py::test_search_substring
+tinydb,TDB-R13,PE + AVL (intervalo m..n),2,test_tinydb_funcional.py::test_test_com_parametros_valor_limite | test_tinydb_funcional.py::test_test_simples
+tinydb,TDB-R14,PE,1,test_tinydb_funcional.py::test_fragment
+tinydb,TDB-R15,PE (lista / query aninhada),2,test_tinydb_funcional.py::test_any_com_lista | test_tinydb_funcional.py::test_any_com_query
+tinydb,TDB-R16,PE (lista / query aninhada),2,test_tinydb_funcional.py::test_all_com_lista | test_tinydb_funcional.py::test_all_com_query
+tinydb,TDB-R17,PE,1,test_tinydb_funcional.py::test_one_of
+tinydb,TDB-R18,PE,1,test_tinydb_funcional.py::test_modificadores_logicos
+tinydb,TDB-R19,PE (classe inválida),2,test_tinydb_funcional.py::test_predicado_callable_em_search | test_tinydb_funcional.py::test_query_sem_condicao_nao_pode_ser_usada
+tinydb,TDB-R20,PE (lista / gerador / vazia),2,test_tinydb_funcional.py::test_insert_multiple_lista_e_gerador | test_tinydb_funcional.py::test_insert_multiple_vazio
+tinydb,TDB-R21,PE (ID novo / ID duplicado),2,test_tinydb_funcional.py::test_document_com_doc_id | test_tinydb_funcional.py::test_document_com_doc_id_duplicado
+tinydb,TDB-R22,PE,1,test_tinydb_funcional.py::test_update_sem_query
+tinydb,TDB-R23,PE,1,test_tinydb_funcional.py::test_operacoes_de_update
+tinydb,TDB-R24,PE,1,test_tinydb_funcional.py::test_update_funcao_personalizada
+tinydb,TDB-R25,PE,1,test_tinydb_funcional.py::test_update_multiple
+tinydb,TDB-R26,PE (existe / não existe / por ID),4,test_tinydb_funcional.py::test_upsert_atualiza_quando_existe | test_tinydb_funcional.py::test_upsert_insere_quando_nao_existe | test_tinydb_funcional.py::test_upsert_por_doc_id | test_tinydb_funcional.py::test_upsert_sem_query_nem_doc_id_e_erro
+tinydb,TDB-R27,PE + AVL (0 / 1 / vários resultados),1,test_tinydb_funcional.py::test_len_count_contains_get_por_quantidade
+tinydb,TDB-R28,PE,2,test_tinydb_funcional.py::test_doc_ids | test_tinydb_funcional.py::test_doc_ids_inexistentes_sao_ignorados
+tinydb,TDB-R29,PE,2,test_tinydb_funcional.py::test_tabelas | test_tinydb_funcional.py::test_tabela_vazia_nao_aparece_em_tables
+tinydb,TDB-R30,PE,1,test_tinydb_funcional.py::test_default_table_name_por_instancia
+tinydb,TDB-R31,AVL (0 / 1 / None),3,test_tinydb_funcional.py::test_cache_size_nao_altera_resultado | test_tinydb_funcional.py::test_mesma_tabela_reaproveitada | test_tinydb_funcional.py::test_clear_cache_relê_storage_externo
+tinydb,TDB-R32,PE,5,test_tinydb_funcional.py::test_json_storage_persiste | test_tinydb_funcional.py::test_json_storage_kwargs_indent | test_tinydb_funcional.py::test_json_storage_create_dirs | test_tinydb_funcional.py::test_json_storage_sem_create_dirs_falha | test_tinydb_funcional.py::test_memory_storage_nao_cria_arquivo
+tinydb,TDB-R33,PE,1,test_tinydb_funcional.py::test_access_mode_somente_leitura
+tinydb,TDB-R34,AVL (WRITE_CACHE_SIZE-1 / WRITE_CACHE_SIZE),3,test_tinydb_funcional.py::test_caching_middleware_flush_e_close | test_tinydb_funcional.py::test_caching_middleware_write_cache_size_limite | test_tinydb_funcional.py::test_caching_middleware_memoria
+tinydb,TDB-R35,PE,1,test_tinydb_funcional.py::test_context_manager_fecha_storage
+tinydb,TDB-R36,PE,2,test_tinydb_funcional.py::test_storage_personalizado_recebe_argumentos_e_inicializa | test_tinydb_funcional.py::test_middleware_personalizado
+tinydb,TDB-R37,PE,1,test_tinydb_funcional.py::test_propriedades_e_repr
+arrow,ARW-R01,PE,1,test_arrow_funcional.py::test_utcnow_e_now
+arrow,ARW-R02,PE + AVL (0 / negativo / fração),2,test_arrow_funcional.py::test_get_timestamp | test_arrow_funcional.py::test_fromtimestamp_string_e_tz
+arrow,ARW-R03,PE,1,test_arrow_funcional.py::test_get_datetime
+arrow,ARW-R04,PE,2,test_arrow_funcional.py::test_get_com_formato | test_arrow_funcional.py::test_get_com_formato_e_tzinfo
+arrow,ARW-R05,PE,1,test_arrow_funcional.py::test_busca_data_em_texto
+arrow,ARW-R06,PE,1,test_arrow_funcional.py::test_iso8601_sem_formato
+arrow,ARW-R07,PE,1,test_arrow_funcional.py::test_instanciacao_direta
+arrow,ARW-R08,PE,1,test_arrow_funcional.py::test_get_outras_entradas
+arrow,ARW-R09,PE,1,test_arrow_funcional.py::test_propriedades
+arrow,ARW-R10,PE,2,test_arrow_funcional.py::test_replace | test_arrow_funcional.py::test_replace_com_atributo_plural_e_erro
+arrow,ARW-R11,PE + AVL (fim de mês / ano bissexto),4,test_arrow_funcional.py::test_shift | test_arrow_funcional.py::test_shift_valor_limite | test_arrow_funcional.py::test_shift_weekday | test_arrow_funcional.py::test_shift_argumento_invalido
+arrow,ARW-R12,PE (hora ambígua / não ambígua),2,test_arrow_funcional.py::test_horario_ambiguo | test_arrow_funcional.py::test_horario_inexistente_e_imaginario
+arrow,ARW-R13,PE + AVL (1 dígito / 2 dígitos),6,test_arrow_funcional.py::test_format_tokens | test_arrow_funcional.py::test_format_ordinal_dia | test_arrow_funcional.py::test_format_padrao_conforme_readme | test_arrow_funcional.py::test_format_timestamp_x_fracionario | test_arrow_funcional.py::test_format_timestamp_x_inteiro | test_arrow_funcional.py::test_format_padrao_e_tarde_e_zzz
+arrow,ARW-R14,PE,1,test_arrow_funcional.py::test_formatos_predefinidos
+arrow,ARW-R15,PE,2,test_arrow_funcional.py::test_escape_tokens | test_arrow_funcional.py::test_escape_regex
+arrow,ARW-R16,PE (válida / inválida),2,test_arrow_funcional.py::test_pontuacao_valida | test_arrow_funcional.py::test_pontuacao_dupla_invalida
+arrow,ARW-R17,PE,2,test_arrow_funcional.py::test_normalize_whitespace | test_arrow_funcional.py::test_sem_normalize_whitespace_falha
+arrow,ARW-R18,PE,1,test_arrow_funcional.py::test_to
+arrow,ARW-R19,PE + AVL (limiares de unidade),6,test_arrow_funcional.py::test_humanize_auto | test_arrow_funcional.py::test_humanize_relativo_ao_agora_e_datetime | test_arrow_funcional.py::test_humanize_only_distance_e_granularidade | test_arrow_funcional.py::test_humanize_granularidade_unidades | test_arrow_funcional.py::test_humanize_granularidade_invalida | test_arrow_funcional.py::test_humanize_outro_tipo_invalido
+arrow,ARW-R20,PE,2,test_arrow_funcional.py::test_humanize_localidades | test_arrow_funcional.py::test_humanize_localidade_inexistente
+arrow,ARW-R21,PE,4,test_arrow_funcional.py::test_dehumanize | test_arrow_funcional.py::test_dehumanize_localidade | test_arrow_funcional.py::test_dehumanize_invalido | test_arrow_funcional.py::test_dehumanize_localidade_invalida
+arrow,ARW-R22,PE + AVL (limites do intervalo),4,test_arrow_funcional.py::test_span | test_arrow_funcional.py::test_span_week_start_count_bounds_exact | test_arrow_funcional.py::test_span_week_start_invalido | test_arrow_funcional.py::test_span_frame_invalido
+arrow,ARW-R23,PE + AVL (limit 0 / 1),6,test_arrow_funcional.py::test_span_range_e_range | test_arrow_funcional.py::test_span_range_conforme_guia | test_arrow_funcional.py::test_range_limit | test_arrow_funcional.py::test_range_tz_meses_e_fim_de_mes | test_arrow_funcional.py::test_span_range_limit_tz_bounds_exact | test_arrow_funcional.py::test_range_sem_fim_e_sem_limite
+arrow,ARW-R24,PE,2,test_arrow_funcional.py::test_interval | test_arrow_funcional.py::test_interval_invalido
+arrow,ARW-R25,AVL (instante igual ao início/fim),2,test_arrow_funcional.py::test_is_between | test_arrow_funcional.py::test_is_between_entradas_invalidas
+arrow,ARW-R26,PE,1,test_arrow_funcional.py::test_factory_tipo_derivado
+arrow,ARW-R27,PE,2,test_arrow_funcional.py::test_construtores_alternativos | test_arrow_funcional.py::test_fromordinal_invalido
+arrow,ARW-R28,PE,1,test_arrow_funcional.py::test_aritmetica_e_comparacao
+arrow,ARW-R29,PE,1,test_arrow_funcional.py::test_interoperabilidade_datetime
+arrow,ARW-R30,PE (classes inválidas),2,test_arrow_funcional.py::test_entradas_invalidas_parser | test_arrow_funcional.py::test_tipos_e_fusos_invalidos
+arrow,ARW-R31,PE + AVL,2,test_arrow_funcional.py::test_tokens_interpretacao | test_arrow_funcional.py::test_x_em_texto_natural_nao_suportado
+arrow,ARW-R32,PE,1,test_arrow_funcional.py::test_localizacao_interpretacao_e_formatacao
+humanize,HUM-R01,PE + AVL (999 / 1000),2,test_humanize_funcional.py::test_intcomma | test_humanize_funcional.py::test_intcomma_ndigits
+humanize,HUM-R02,PE + AVL (limites de cada potência),2,test_humanize_funcional.py::test_intword | test_humanize_funcional.py::test_intword_format_e_negativo
+humanize,HUM-R03,AVL (0 / 9 / 10) + PE,1,test_humanize_funcional.py::test_apnumber
+humanize,HUM-R04,PE + AVL,2,test_humanize_funcional.py::test_ordinal | test_humanize_funcional.py::test_ordinal_lista_e_gender
+humanize,HUM-R05,PE,1,test_humanize_funcional.py::test_fractional
+humanize,HUM-R06,PE + AVL (precision 0),1,test_humanize_funcional.py::test_scientific
+humanize,HUM-R07,AVL (valor = limite / além do limite),1,test_humanize_funcional.py::test_clamp
+humanize,HUM-R08,PE + AVL,2,test_humanize_funcional.py::test_metric | test_humanize_funcional.py::test_metric_precision
+humanize,HUM-R09,PE + AVL (1 byte / 1000 / 1024),2,test_humanize_funcional.py::test_naturalsize | test_humanize_funcional.py::test_naturalsize_gnu
+humanize,HUM-R10,PE (hoje / ontem / amanhã / outro dia),2,test_humanize_funcional.py::test_naturalday | test_humanize_funcional.py::test_naturalday_entrada_nao_data
+humanize,HUM-R11,PE + AVL (perto / longe),1,test_humanize_funcional.py::test_naturaldate
+humanize,HUM-R12,PE + AVL,4,test_humanize_funcional.py::test_naturaldelta | test_humanize_funcional.py::test_naturaldelta_readme_1001_segundos | test_humanize_funcional.py::test_naturaldelta_minimum_unit_e_months | test_humanize_funcional.py::test_naturaldelta_entradas_invalidas
+humanize,HUM-R13,PE,3,test_humanize_funcional.py::test_naturaltime | test_humanize_funcional.py::test_naturaltime_futuro_e_when | test_humanize_funcional.py::test_naturaltime_com_fuso
+humanize,HUM-R14,PE + AVL,3,test_humanize_funcional.py::test_precisedelta | test_humanize_funcional.py::test_precisedelta_limites | test_humanize_funcional.py::test_precisedelta_invalidos
+humanize,HUM-R15,AVL (0 / 1 / 2 / 3 itens),1,test_humanize_funcional.py::test_natural_list
+humanize,HUM-R16,PE,4,test_humanize_funcional.py::test_activate_deactivate_ru | test_humanize_funcional.py::test_separadores_do_locale | test_humanize_funcional.py::test_traducoes_diferem_do_ingles | test_humanize_funcional.py::test_locale_inexistente_e_none
+humanize,HUM-R17,PE,2,test_humanize_funcional.py::test_activate_com_path | test_humanize_funcional.py::test_activate_com_path_apos_carregar_locale

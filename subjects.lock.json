@@ -1,0 +1,47 @@
+{
+  "tinydb": {
+    "repo": "https://github.com/msiemens/tinydb",
+    "tag": "v4.9.0",
+    "commit": "1e39ad3a2d9eca57efd9019fd089b5a04676da95",
+    "package_dir": "tinydb",
+    "package": "tinydb",
+    "runtime_deps": [],
+    "omit": [
+      "mypy_plugin.py"
+    ],
+    "extra_files": {},
+    "build_deps": [],
+    "compile_mo": false
+  },
+  "arrow": {
+    "repo": "https://github.com/arrow-py/arrow",
+    "tag": "1.4.0",
+    "commit": "2c1f5185ad66bf3b1cf8c0812f4b4fe65ac46656",
+    "package_dir": "arrow",
+    "package": "arrow",
+    "runtime_deps": [
+      "python-dateutil==4.0.0",
+      "tzdata==2026.6"
+    ],
+    "omit": [],
+    "extra_files": {},
+    "build_deps": [],
+    "compile_mo": false
+  },
+  "humanize": {
+    "repo": "https://github.com/python-humanize/humanize",
+    "tag": "4.17.0",
+    "commit": "a95004512dde4e8f0269946bb4af754382347441",
+    "package_dir": "src/humanize",
+    "package": "humanize",
+    "runtime_deps": [],
+    "omit": [],
+    "extra_files": {
+      "_version.py": "__version__ = \"4.17.0\"\n"
+    },
+    "build_deps": [
+      "babel==2.17.0"
+    ],
+    "compile_mo": true
+  }
+}

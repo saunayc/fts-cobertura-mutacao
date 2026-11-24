@@ -1,0 +1,18 @@
+id,fonte,requisito,tecnica
+HUM-R01,README#Integer + api (intcomma),"intcomma insere separador de milhar em int, float e str; ndigits arredonda; None vira 'None'",PE + AVL (999 / 1000)
+HUM-R02,README#Integer + api (intword),"intword converte para thousand, million, billion … decillion e googol; valores pequenos ficam inalterados; format personaliza",PE + AVL (limites de cada potência)
+HUM-R03,README#Integer + api (apnumber),apnumber escreve por extenso de 0 a 9 e devolve o número a partir de 10; entrada não numérica vira str,AVL (0 / 9 / 10) + PE
+HUM-R04,api (ordinal),"ordinal gera 1st, 2nd, 3rd, 4th, 11th–13th, 101st…; não numérico vira str; gender para traduções",PE + AVL
+HUM-R05,README#Floating point + api (fractional),"fractional devolve fração, número inteiro ou fração mista; não conversível vira str",PE
+HUM-R06,README#Scientific + api (scientific),"scientific usa notação z.wq x 10ⁿ com precision; aceita str, negativos; não conversível vira str",PE + AVL (precision 0)
+HUM-R07,api (clamp),"clamp formata e limita a floor/ceil com tokens; format pode ser str ou função; None retorna None",AVL (valor = limite / além do limite)
+HUM-R08,api (metric),"metric aplica prefixo SI (k, M, μ, f…) com precision e recorre a scientific para valores extremos",PE + AVL
+HUM-R09,README#File size + api (naturalsize),"naturalsize em decimal (kB, MB…), binário (KiB…) e GNU (K, M); format; negativos; str numérica",PE + AVL (1 byte / 1000 / 1024)
+HUM-R10,README#Date & time + api (naturalday),"naturalday retorna today, yesterday, tomorrow ou data formatada (format)",PE (hoje / ontem / amanhã / outro dia)
+HUM-R11,README#Date & time + api (naturaldate),naturaldate acrescenta o ano para datas a mais de ~5 meses,PE + AVL (perto / longe)
+HUM-R12,README#Date & time + api (naturaldelta),"naturaldelta representa timedelta ou segundos sem tempo verbal; months; minimum_unit; entrada inválida devolvida sem alteração",PE + AVL
+HUM-R13,README#Date & time + api (naturaltime),"naturaltime adiciona 'ago'/'from now'; aceita datetime, timedelta ou número; future; when; minimum_unit",PE
+HUM-R14,README#Precise time delta + api (precisedelta),"precisedelta com minimum_unit, suppress e format; valores pequenos demais resultam em zero",PE + AVL
+HUM-R15,api (natural_list),natural_list junta itens com vírgulas e 'and',AVL (0 / 1 / 2 / 3 itens)
+HUM-R16,README#Localization + api (i18n),"activate/deactivate trocam o idioma; separadores numéricos do locale; locale inexistente gera FileNotFoundError; activate(None) equivale a deactivate",PE
+HUM-R17,README#Localization,activate aceita path para catálogos próprios,PE

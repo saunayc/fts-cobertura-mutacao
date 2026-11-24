@@ -1,0 +1,12 @@
+........................................................................ [ 16%]
+.........x.x............................................................ [ 32%]
+..........x............................................................. [ 48%]
+........................................................................ [ 65%]
+........................................................................ [ 81%]
+........................................................................ [ 97%]
+.........                                                                [100%]
+=========================== short test summary info ============================
+XFAIL tests/functional/test_arrow_funcional.py::test_format_padrao_conforme_readme - DIVERGENCIA-03: README mostra format() == '2013-05-11 13:23:58 -07:00' (com espaço antes do fuso)
+XFAIL tests/functional/test_arrow_funcional.py::test_format_timestamp_x_inteiro - DIVERGENCIA-05 (ambígua): a tabela de tokens lista '1381685817' como saída de X, mas um timestamp inteiro é formatado como '1367741229.0'
+XFAIL tests/functional/test_arrow_funcional.py::test_span_range_conforme_guia - DIVERGENCIA-04: o guia mostra 5 intervalos (12h..16h) para span_range('hour', 12:30, 17:15); a biblioteca inclui também o das 17h
+438 passed, 3 xfailed in 0.87s

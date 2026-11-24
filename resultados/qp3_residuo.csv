@@ -1,0 +1,19 @@
+id,biblioteca,modulo,linhas,categoria_A,alcancavel_A,situacao
+TDB-T013,tinydb,tinydb/storages.py,57,MORTO,nao,previsto (inalcançável)
+TDB-T014,tinydb,tinydb/storages.py,69,MORTO,nao,previsto (inalcançável)
+TDB-T030,tinydb,tinydb/utils.py,128,MORTO,nao,previsto (inalcançável)
+TDB-T031,tinydb,tinydb/utils.py,138,MORTO,nao,previsto (inalcançável)
+TDB-T032,tinydb,tinydb/utils.py,141,MORTO,nao,previsto (inalcançável)
+ARW-T024,arrow,arrow/arrow.py,1843-1847,VAL,sim,tentativa sem sucesso
+ARW-T042,arrow,arrow/locales.py,257,MORTO,nao,previsto (inalcançável)
+ARW-T093,arrow,arrow/parser.py,28-29,CFG,nao,previsto (inalcançável)
+ARW-T094,arrow,arrow/parser.py,246,CFG,nao,previsto (inalcançável)
+ARW-T101,arrow,arrow/parser.py,433,MORTO,nao,previsto (inalcançável)
+ARW-T115,arrow,arrow/parser.py,690->-591,MORTO,nao,previsto (inalcançável)
+ARW-T116,arrow,arrow/parser.py,692->-591,MORTO,nao,previsto (inalcançável)
+HUM-T002,humanize,humanize/i18n.py,47,CFG,nao,previsto (inalcançável)
+HUM-T003,humanize,humanize/i18n.py,86-90,CFG,nao,previsto (inalcançável)
+HUM-T038,humanize,humanize/time.py,468->473,MORTO,nao,previsto (inalcançável)
+HUM-T039,humanize,humanize/time.py,655->674,MORTO,nao,previsto (inalcançável)
+HUM-T040,humanize,humanize/time.py,663->665,MORTO,nao,previsto (inalcançável)
+(novo),humanize,humanize/time.py,206->256,,,desvio parcial revelado na fase final

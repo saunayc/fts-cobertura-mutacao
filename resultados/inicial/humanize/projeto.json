@@ -1,0 +1,24 @@
+{
+  "biblioteca": "humanize",
+  "fase": "inicial",
+  "commit": "a95004512dde4e8f0269946bb4af754382347441",
+  "testes": [
+    "tests/functional"
+  ],
+  "comandos_total": 549,
+  "comandos_cobertos": 480,
+  "desvios_total": 218,
+  "desvios_cobertos": 168,
+  "except_total": 14,
+  "except_cobertos": 11,
+  "cobertura_comandos": 87.43,
+  "cobertura_desvios": 77.06,
+  "cobertura_except": 78.57,
+  "mutantes_total": 1348,
+  "mutantes_mortos": 918,
+  "mutantes_sobreviventes": 411,
+  "mutantes_sem_teste": 19,
+  "mutantes_timeout": 0,
+  "mutantes_suspeitos": 0,
+  "escore_mutacao": 68.1
+}

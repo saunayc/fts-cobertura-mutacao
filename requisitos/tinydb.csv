@@ -1,0 +1,38 @@
+id,fonte,requisito,tecnica
+TDB-R01,getting-started.rst#Basic Usage,insert(doc) armazena um dict e retorna o ID do documento inserido,PE (documento válido)
+TDB-R02,getting-started.rst#Basic Usage,all() retorna todos os documentos; iter(db) percorre os mesmos documentos,PE (tabela vazia / não vazia)
+TDB-R03,getting-started.rst#Basic Usage,"search(query) retorna somente os documentos que satisfazem ==, !=, <, <=, >, >=",PE + AVL (valor no limite e ±1)
+TDB-R04,getting-started.rst#Basic Usage,update(fields; query) altera apenas os documentos que satisfazem a query,PE
+TDB-R05,getting-started.rst#Basic Usage,remove(query) remove apenas os documentos que satisfazem a query,PE
+TDB-R06,getting-started.rst#Basic Usage,truncate() remove todos os documentos,PE
+TDB-R07,usage.rst#Queries,Campos aninhados podem ser consultados por atributo e por índice (User.a.b / User['a']['b']),PE
+TDB-R08,usage.rst#Queries,where('campo') equivale a Query()['campo'],PE
+TDB-R09,usage.rst#Queries,map(fn) aplica uma transformação ao valor antes da comparação,PE
+TDB-R10,usage.rst#Advanced queries,exists() casa documentos em que o campo existe,PE (presente / ausente)
+TDB-R11,usage.rst#Advanced queries,matches(regex) exige casamento do valor inteiro; aceita flags,PE (casa total / parcial / flag)
+TDB-R12,usage.rst#Advanced queries,search(regex) casa qualquer substring,PE
+TDB-R13,usage.rst#Advanced queries,"test(func, *args) casa quando a função retorna True, repassando argumentos extras",PE + AVL (intervalo m..n)
+TDB-R14,usage.rst#Advanced queries,fragment(dict) casa documentos (ou campos) que contêm o fragmento,PE
+TDB-R15,usage.rst#Advanced queries,any(lista|query) casa quando pelo menos um elemento atende,PE (lista / query aninhada)
+TDB-R16,usage.rst#Advanced queries,all(lista|query) casa quando todos os elementos atendem,PE (lista / query aninhada)
+TDB-R17,usage.rst#Advanced queries,one_of(lista) casa quando o valor está contido na lista,PE
+TDB-R18,usage.rst#Query modifiers,"~, & e | negam e combinam queries; noop() casa tudo",PE
+TDB-R19,usage.rst#Query modifiers,Comparação campo-a-campo não é suportada; predicados callables funcionam em search,PE (classe inválida)
+TDB-R20,usage.rst#Inserting data,insert_multiple aceita lista e gerador e retorna a lista de IDs,PE (lista / gerador / vazia)
+TDB-R21,usage.rst#Inserting data,Document com doc_id explícito é inserido com esse ID; ID repetido levanta ValueError,PE (ID novo / ID duplicado)
+TDB-R22,usage.rst#Updating data,update sem query altera todos os documentos,PE
+TDB-R23,usage.rst#Updating data,"Operações delete, increment, decrement, add (números e strings), subtract, set",PE
+TDB-R24,usage.rst#Updating data,update aceita função personalizada que transforma o documento,PE
+TDB-R25,usage.rst#Updating data,update_multiple aplica vários pares (campos; query),PE
+TDB-R26,usage.rst#Upserting data,upsert atualiza se houver casamento e insere caso contrário; aceita Document com doc_id,PE (existe / não existe / por ID)
+TDB-R27,usage.rst#Retrieving data,"len, get, contains e count",PE + AVL (0 / 1 / vários resultados)
+TDB-R28,usage.rst#Using Document IDs,"doc_id disponível; get/contains/update/remove aceitam doc_id(s); IDs inexistentes são ignorados em update/remove",PE
+TDB-R29,usage.rst#Tables,"table(nome), drop_table, drop_tables e tables()",PE
+TDB-R30,usage.rst#Default Table,default_table_name altera a tabela padrão por instância,PE
+TDB-R31,usage.rst#Query Caching,"cache_size (0, N, None) e clear_cache() não alteram resultados; mesma tabela é reaproveitada",AVL (0 / 1 / None)
+TDB-R32,usage.rst#Storage Types,"JSONStorage persiste em arquivo; kwargs repassados ao json (indent); create_dirs; MemoryStorage em memória",PE
+TDB-R33,api (JSONStorage),access_mode 'r' abre o arquivo apenas para leitura,PE
+TDB-R34,usage.rst#Middleware,CachingMiddleware mantém dados em memória e os grava no disco em flush()/close() ou ao atingir WRITE_CACHE_SIZE,AVL (WRITE_CACHE_SIZE-1 / WRITE_CACHE_SIZE)
+TDB-R35,usage.rst#CachingMiddleware,TinyDB pode ser usado como gerenciador de contexto (fecha o storage),PE
+TDB-R36,extend.rst,Storage e Middleware personalizados podem ser plugados; storage que retorna None é inicializado,PE
+TDB-R37,api (Table),Table.name e Table.storage expõem o nome e o storage; repr é informativo,PE

@@ -1,0 +1,10 @@
+modulo,comandos_total,comandos_cobertos,cobertura_comandos,desvios_total,desvios_cobertos,cobertura_desvios,except_total,except_cobertos,cobertura_except,mutantes_total,mutantes_mortos,mutantes_sobreviventes,mutantes_sem_teste,mutantes_timeout,mutantes_suspeitos,escore_mutacao
+tinydb/__init__.py,5,5,100.0,0,0,,0,0,,0,0,0,0,0,0,
+tinydb/database.py,56,54,96.43,10,6,60.0,0,0,,48,40,8,0,0,0,83.33
+tinydb/middlewares.py,33,32,96.97,6,6,100.0,0,0,,27,16,5,6,0,0,59.26
+tinydb/operations.py,26,26,100.0,0,0,,0,0,,11,11,0,0,0,0,100.0
+tinydb/queries.py,132,124,93.94,26,20,76.92,2,1,50.0,272,172,100,0,0,0,63.24
+tinydb/storages.py,60,57,95.0,10,8,80.0,1,1,100.0,75,47,28,0,0,0,62.67
+tinydb/table.py,221,215,97.29,84,78,92.86,2,2,100.0,279,196,83,0,0,0,70.25
+tinydb/utils.py,74,58,78.38,16,11,68.75,0,0,,52,15,22,15,0,0,28.85
+tinydb/version.py,1,1,100.0,0,0,,0,0,,0,0,0,0,0,0,

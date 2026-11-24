@@ -1,0 +1,43 @@
+id,biblioteca,modulo,escopo,tipo,linhas,n_comandos,codigo
+TDB-T001,tinydb,tinydb/database.py,TinyDB.drop_table,L,192,1,            return
+TDB-T002,tinydb,tinydb/database.py,TinyDB.drop_table,L,196,1,            return
+TDB-T003,tinydb,tinydb/database.py,TinyDB.drop_table,D,185->188,0,        if name in self._tables:    # desvio não exercitado -> linha 188
+TDB-T004,tinydb,tinydb/database.py,TinyDB.__exit__,D,248->-244,0,        if self._opened:    # desvio não exercitado -> saída da função
+TDB-T005,tinydb,tinydb/middlewares.py,Middleware.__getattr__,L,73,1,"        return getattr(self.__dict__['storage'], name)"
+TDB-T006,tinydb,tinydb/queries.py,QueryInstance.__init__,L,78-81,2,"            except TypeError:
+                # Contains something we can't freeze (e.g. a numpy array) --
+                # fall back to uncacheable rather than crash on first use.
+                hashval = None"
+TDB-T007,tinydb,tinydb/queries.py,QueryInstance.__eq__,L,109,1,        return False
+TDB-T008,tinydb,tinydb/queries.py,QueryInstance.__and__,L,120,1,            hashval = None
+TDB-T009,tinydb,tinydb/queries.py,QueryInstance.__or__,L,130,1,            hashval = None
+TDB-T010,tinydb,tinydb/queries.py,Query._generate_test,L,230,1,            raise ValueError('Query has no path')
+TDB-T011,tinydb,tinydb/queries.py,Query.matches.test,L,351,1,                return False
+TDB-T012,tinydb,tinydb/queries.py,Query.search.test,L,370,1,                return False
+TDB-T013,tinydb,tinydb/storages.py,Storage.read,L,57,1,        raise NotImplementedError('To be overridden!')
+TDB-T014,tinydb,tinydb/storages.py,Storage.write,L,69,1,        raise NotImplementedError('To be overridden!')
+TDB-T015,tinydb,tinydb/storages.py,JSONStorage.__init__,L,109,1,            warnings.warn(
+TDB-T016,tinydb,tinydb/storages.py,touch,D,27->32,0,        if base_dir and not os.path.exists(base_dir):    # desvio não exercitado -> linha 32
+TDB-T017,tinydb,tinydb/table.py,Table.__init__,L,112,1,            self._update_table(lambda table: table.clear())
+TDB-T018,tinydb,tinydb/table.py,Table.insert,L,147,1,            raise ValueError('Document is not a Mapping')
+TDB-T019,tinydb,tinydb/table.py,Table.insert_multiple.updater,L,191,1,                    raise ValueError('Document is not a Mapping')
+TDB-T020,tinydb,tinydb/table.py,Table.get,L,378,1,        raise RuntimeError('You have to pass either cond or doc_id or doc_ids')
+TDB-T021,tinydb,tinydb/table.py,Table.contains,L,402,1,        raise RuntimeError('You have to pass either cond or doc_id')
+TDB-T022,tinydb,tinydb/table.py,Table.remove,L,673,1,        raise RuntimeError('Use truncate() to remove all documents')
+TDB-T023,tinydb,tinydb/utils.py,LRUCache.lru,L,59,1,        return list(self.cache.keys())
+TDB-T024,tinydb,tinydb/utils.py,LRUCache.__len__,L,69,1,        return self.length
+TDB-T025,tinydb,tinydb/utils.py,LRUCache.__contains__,L,72,1,        return key in self.cache
+TDB-T026,tinydb,tinydb/utils.py,LRUCache.__delitem__,L,78,1,        del self.cache[key]
+TDB-T027,tinydb,tinydb/utils.py,LRUCache.__getitem__,L,81-85,4,"        value = self.get(key)
+        if value is None:
+            raise KeyError(key)
+
+        return value"
+TDB-T028,tinydb,tinydb/utils.py,LRUCache.__iter__,L,88,1,        return iter(self.cache)
+TDB-T029,tinydb,tinydb/utils.py,LRUCache.set,L,102-103,2,"            self.cache[key] = value
+            self.cache.move_to_end(key, last=True)"
+TDB-T030,tinydb,tinydb/utils.py,FrozenDict._immutable,L,128,1,        raise TypeError('object is immutable')
+TDB-T031,tinydb,tinydb/utils.py,FrozenDict.update,L,138,1,        raise TypeError('object is immutable')
+TDB-T032,tinydb,tinydb/utils.py,FrozenDict.pop,L,141,1,        raise TypeError('object is immutable')
+TDB-T033,tinydb,tinydb/utils.py,freeze,L,157,1,        return tuple(freeze(el) for el in obj)
+TDB-T034,tinydb,tinydb/utils.py,freeze,L,160,1,        return frozenset(obj)

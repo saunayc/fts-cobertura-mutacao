@@ -1,0 +1,13 @@
+biblioteca,metrica,inicial,final,ganho_pp
+tinydb,cobertura_comandos,94.08,99.18,5.1000000000000085
+tinydb,cobertura_desvios,84.87,100.0,15.129999999999995
+tinydb,cobertura_except,80.0,100.0,20.0
+tinydb,escore_mutacao,65.05,70.68,5.63000000000001
+arrow,cobertura_comandos,86.22,99.61,13.39
+arrow,cobertura_desvios,69.51,98.84,29.33
+arrow,cobertura_except,41.67,83.33,41.66
+arrow,escore_mutacao,62.99,72.25,9.259999999999998
+humanize,cobertura_comandos,87.43,99.45,12.019999999999996
+humanize,cobertura_desvios,77.06,97.25,20.189999999999998
+humanize,cobertura_except,78.57,100.0,21.430000000000007
+humanize,escore_mutacao,68.1,84.05,15.950000000000003

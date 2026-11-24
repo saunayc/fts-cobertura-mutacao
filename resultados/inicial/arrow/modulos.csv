@@ -1,0 +1,11 @@
+modulo,comandos_total,comandos_cobertos,cobertura_comandos,desvios_total,desvios_cobertos,cobertura_desvios,except_total,except_cobertos,cobertura_except,mutantes_total,mutantes_mortos,mutantes_sobreviventes,mutantes_sem_teste,mutantes_timeout,mutantes_suspeitos,escore_mutacao
+arrow/__init__.py,7,7,100.0,0,0,,0,0,,0,0,0,0,0,0,
+arrow/_version.py,1,1,100.0,0,0,,0,0,,0,0,0,0,0,0,
+arrow/api.py,20,19,95.0,0,0,,0,0,,4,3,0,1,0,0,75.0
+arrow/arrow.py,563,534,94.85,240,214,89.17,4,2,50.0,1427,1038,389,0,5,0,72.74
+arrow/constants.py,12,12,100.0,0,0,,1,0,0.0,0,0,0,0,0,0,
+arrow/factory.py,80,74,92.5,50,42,84.0,0,0,,137,100,37,0,0,0,72.99
+arrow/formatter.py,101,99,98.02,70,67,95.71,0,0,,211,191,20,0,0,0,90.52
+arrow/locales.py,1176,937,79.68,176,30,17.05,0,0,,686,130,63,493,0,0,18.95
+arrow/parser.py,310,276,89.03,134,113,84.33,6,2,33.33,940,699,241,0,0,0,74.36
+arrow/util.py,45,37,82.22,22,15,68.18,1,1,100.0,105,50,32,23,0,0,47.62

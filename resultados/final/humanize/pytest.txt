@@ -1,0 +1,6 @@
+........................................................................ [ 46%]
+...................................................x.................... [ 93%]
+..........                                                               [100%]
+=========================== short test summary info ============================
+XFAIL tests/functional/test_humanize_funcional.py::test_activate_com_path_apos_carregar_locale - DIVERGENCIA-06: activate(locale, path) ignora o path e não levanta FileNotFoundError quando o mesmo locale já foi carregado do caminho padrão
+153 passed, 1 xfailed in 0.29s

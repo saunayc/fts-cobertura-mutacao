@@ -1,0 +1,24 @@
+{
+  "biblioteca": "tinydb",
+  "fase": "inicial",
+  "commit": "1e39ad3a2d9eca57efd9019fd089b5a04676da95",
+  "testes": [
+    "tests/functional"
+  ],
+  "comandos_total": 608,
+  "comandos_cobertos": 572,
+  "desvios_total": 152,
+  "desvios_cobertos": 129,
+  "except_total": 5,
+  "except_cobertos": 4,
+  "cobertura_comandos": 94.08,
+  "cobertura_desvios": 84.87,
+  "cobertura_except": 80.0,
+  "mutantes_total": 764,
+  "mutantes_mortos": 497,
+  "mutantes_sobreviventes": 246,
+  "mutantes_sem_teste": 21,
+  "mutantes_timeout": 0,
+  "mutantes_suspeitos": 0,
+  "escore_mutacao": 65.05
+}

@@ -1,0 +1,6 @@
+......................x..x.............................................. [ 90%]
+........                                                                 [100%]
+=========================== short test summary info ============================
+XFAIL tests/functional/test_tinydb_funcional.py::test_matches_valor_inteiro - DIVERGENCIA-01: docs dizem 'Full item has to match', mas 'John' casa com 'Johnny' (ancora so no inicio)
+XFAIL tests/functional/test_tinydb_funcional.py::test_matches_flag_apos_consulta_sem_flag - DIVERGENCIA-02: a mesma regex com flags diferentes reaproveita o resultado do cache de consultas
+78 passed, 2 xfailed in 0.27s

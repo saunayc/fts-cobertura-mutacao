@@ -1,0 +1,41 @@
+id,modulo,escopo,linhas,categoria,alcancavel,justificativa
+HUM-T001,humanize/filesize.py,naturalsize,108,LIM,sim,arredondamento leva ao próximo sufixo (999999 B)
+HUM-T002,humanize/i18n.py,_get_default_locale_path,47,CFG,nao,módulo carregado sem __spec__ (empacotamento)
+HUM-T003,humanize/i18n.py,activate,86-90,CFG,nao,pasta de locale padrão indeterminável
+HUM-T004,humanize/number.py,_format_not_finite,83-91,VAL,sim,tratamento de NaN e infinitos
+HUM-T005,humanize/number.py,ordinal,135,VAL,sim,ordinal de valor não finito
+HUM-T006,humanize/number.py,intcomma,186,VAL,sim,intcomma de string não finita
+HUM-T007,humanize/number.py,intcomma,193,VAL,sim,intcomma de float não finito
+HUM-T008,humanize/number.py,intword,263,VAL,sim,intword de valor não finito
+HUM-T009,humanize/number.py,intword,292-293,LIM,sim,arredondamento leva à próxima potência no intword
+HUM-T010,humanize/number.py,apnumber,334,VAL,sim,apnumber de valor não finito
+HUM-T011,humanize/number.py,fractional,387,VAL,sim,fractional de valor não finito
+HUM-T012,humanize/number.py,scientific,450,VAL,sim,scientific de valor não finito
+HUM-T013,humanize/number.py,clamp,515,VAL,sim,clamp de valor não finito
+HUM-T014,humanize/number.py,clamp,532-536,VAL,sim,clamp com format que não é str nem função
+HUM-T015,humanize/number.py,metric,586,VAL,sim,metric de valor não finito
+HUM-T016,humanize/number.py,metric,597-600,LIM,sim,arredondamento leva ao próximo prefixo no metric
+HUM-T017,humanize/number.py,metric,607,LIM,sim,metric com expoente 0..2 (sem prefixo)
+HUM-T018,humanize/number.py,metric,610,LIM,sim,"metric sem unidade e sem prefixo, ou unidade de ângulo"
+HUM-T019,humanize/time.py,Unit.__lt__,46,MORTO,nao,Unit é interno; nunca comparado com outro tipo
+HUM-T020,humanize/time.py,naturaldelta,202,LIM,sim,"arredondamento de 59,5+ minutos para 'an hour'"
+HUM-T021,humanize/time.py,naturaldelta,212,LIM,sim,"arredondamento de 23,5+ horas para 'a day'"
+HUM-T022,humanize/time.py,naturaldelta,221,CFG,sim,months=False com menos de um ano
+HUM-T023,humanize/time.py,naturaldelta,226-232,LIM,sim,"um mês, 12 meses ou vários meses"
+HUM-T024,humanize/time.py,naturaldelta,239,LIM,sim,1 ano e alguns dias sem mês completo
+HUM-T025,humanize/time.py,naturaldelta,245-249,LIM,sim,1 ano e 12 meses / 1 ano e vários meses
+HUM-T026,humanize/time.py,naturaldelta,256-257,LIM,sim,deltas de 2 anos ou mais
+HUM-T027,humanize/time.py,naturalday,339,LIM,sim,naturalday com datetime com fuso
+HUM-T028,humanize/time.py,naturalday,346-348,EXC,sim,naturalday com data fora da faixa
+HUM-T029,humanize/time.py,naturaldate,370,LIM,sim,naturaldate com datetime com fuso
+HUM-T030,humanize/time.py,naturaldate,374-379,EXC,sim,naturaldate com valor não-data ou fora da faixa
+HUM-T031,humanize/time.py,_suitable_minimum_unit,454-455,VAL,sim,minimum_unit suprimido sem substituto
+HUM-T032,humanize/time.py,precisedelta,621-622,LIM,sim,promoção de 1000 ms para 1 s
+HUM-T033,humanize/time.py,precisedelta,624-625,LIM,sim,promoção de 60 s para 1 min
+HUM-T034,humanize/time.py,precisedelta,627-628,LIM,sim,promoção de 60 min para 1 h
+HUM-T035,humanize/time.py,precisedelta,630-631,LIM,sim,promoção de 24 h para 1 dia
+HUM-T036,humanize/time.py,precisedelta,635-636,LIM,sim,promoção de 31 dias para 1 mês
+HUM-T037,humanize/time.py,precisedelta,638-639,LIM,sim,promoção de 12 meses para 1 ano
+HUM-T038,humanize/time.py,_suppress_lower_units,468->473,MORTO,nao,laço sempre encontra min_unit e sai por break
+HUM-T039,humanize/time.py,precisedelta,655->674,MORTO,nao,laço sempre encontra min_unit e sai por break
+HUM-T040,humanize/time.py,precisedelta,663->665,MORTO,nao,anos fracionários só ocorrem quando YEARS é min_unit (ramo anterior)

@@ -1,0 +1,24 @@
+{
+  "biblioteca": "arrow",
+  "fase": "inicial",
+  "commit": "2c1f5185ad66bf3b1cf8c0812f4b4fe65ac46656",
+  "testes": [
+    "tests/functional"
+  ],
+  "comandos_total": 2315,
+  "comandos_cobertos": 1996,
+  "desvios_total": 692,
+  "desvios_cobertos": 481,
+  "except_total": 12,
+  "except_cobertos": 5,
+  "cobertura_comandos": 86.22,
+  "cobertura_desvios": 69.51,
+  "cobertura_except": 41.67,
+  "mutantes_total": 3510,
+  "mutantes_mortos": 2211,
+  "mutantes_sobreviventes": 782,
+  "mutantes_sem_teste": 517,
+  "mutantes_timeout": 5,
+  "mutantes_suspeitos": 0,
+  "escore_mutacao": 62.99
+}

@@ -1,0 +1,35 @@
+id,modulo,escopo,linhas,categoria,alcancavel,justificativa
+TDB-T001,tinydb/database.py,TinyDB.drop_table,192,LIM,sim,drop_table em banco ainda sem dados gravados (storage vazio)
+TDB-T002,tinydb/database.py,TinyDB.drop_table,196,LIM,sim,drop_table de tabela inexistente no storage
+TDB-T003,tinydb/database.py,TinyDB.drop_table,185->188,LIM,sim,drop_table de tabela nunca aberta nesta instância
+TDB-T004,tinydb/database.py,TinyDB.__exit__,248->-244,LIM,sim,__exit__ após o banco já ter sido fechado
+TDB-T005,tinydb/middlewares.py,Middleware.__getattr__,73,OUTRO,sim,delegação de atributos do Middleware ao storage; API auxiliar não especificada nos requisitos
+TDB-T006,tinydb/queries.py,QueryInstance.__init__,78-81,EXC,sim,except TypeError ao calcular hash de query com argumento não-hashável
+TDB-T007,tinydb/queries.py,QueryInstance.__eq__,109,VAL,sim,__eq__ comparando QueryInstance com objeto de outro tipo
+TDB-T008,tinydb/queries.py,QueryInstance.__and__,120,LIM,sim,combinação & com query não cacheável
+TDB-T009,tinydb/queries.py,QueryInstance.__or__,130,LIM,sim,combinação | com query não cacheável
+TDB-T010,tinydb/queries.py,Query._generate_test,230,VAL,sim,rejeita query sem caminho (Query().matches(...) sem campo)
+TDB-T011,tinydb/queries.py,Query.matches.test,351,VAL,sim,matches sobre valor que não é str
+TDB-T012,tinydb/queries.py,Query.search.test,370,VAL,sim,search sobre valor que não é str
+TDB-T013,tinydb/storages.py,Storage.read,57,MORTO,nao,corpo de método abstrato Storage.read
+TDB-T014,tinydb/storages.py,Storage.write,69,MORTO,nao,corpo de método abstrato Storage.write
+TDB-T015,tinydb/storages.py,JSONStorage.__init__,109,VAL,sim,aviso para access_mode fora dos valores seguros
+TDB-T016,tinydb/storages.py,touch,27->32,LIM,sim,create_dirs=True com diretório já existente
+TDB-T017,tinydb/table.py,Table.__init__,112,CFG,sim,flag persist_empty da tabela
+TDB-T018,tinydb/table.py,Table.insert,147,VAL,sim,insert de documento que não é Mapping
+TDB-T019,tinydb/table.py,Table.insert_multiple.updater,191,VAL,sim,insert_multiple com item que não é Mapping
+TDB-T020,tinydb/table.py,Table.get,378,VAL,sim,"get sem cond, doc_id nem doc_ids"
+TDB-T021,tinydb/table.py,Table.contains,402,VAL,sim,contains sem cond nem doc_id
+TDB-T022,tinydb/table.py,Table.remove,673,VAL,sim,remove sem cond nem doc_ids
+TDB-T023,tinydb/utils.py,LRUCache.lru,59,OUTRO,sim,interface de dicionário do LRUCache (classe utilitária pública) não usada pelo núcleo
+TDB-T024,tinydb/utils.py,LRUCache.__len__,69,OUTRO,sim,LRUCache.__len__ não usado pelo núcleo
+TDB-T025,tinydb/utils.py,LRUCache.__contains__,72,OUTRO,sim,LRUCache.__contains__ não usado pelo núcleo
+TDB-T026,tinydb/utils.py,LRUCache.__delitem__,78,OUTRO,sim,LRUCache.__delitem__ não usado pelo núcleo
+TDB-T027,tinydb/utils.py,LRUCache.__getitem__,81-85,OUTRO,sim,LRUCache.__getitem__ não usado pelo núcleo
+TDB-T028,tinydb/utils.py,LRUCache.__iter__,88,OUTRO,sim,LRUCache.__iter__ não usado pelo núcleo
+TDB-T029,tinydb/utils.py,LRUCache.set,102-103,OUTRO,sim,LRUCache.set com chave existente; via Table só ocorre após miss
+TDB-T030,tinydb/utils.py,FrozenDict._immutable,128,MORTO,nao,FrozenDict é interno; a biblioteca nunca tenta mutá-lo
+TDB-T031,tinydb/utils.py,FrozenDict.update,138,MORTO,nao,FrozenDict.update nunca chamado pela biblioteca
+TDB-T032,tinydb/utils.py,FrozenDict.pop,141,MORTO,nao,FrozenDict.pop nunca chamado pela biblioteca
+TDB-T033,tinydb/utils.py,freeze,157,LIM,sim,freeze de tupla (ex.: argumento tupla em Query.test)
+TDB-T034,tinydb/utils.py,freeze,160,LIM,sim,freeze de set (ex.: argumento set em Query.test)

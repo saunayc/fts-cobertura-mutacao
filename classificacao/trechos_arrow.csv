@@ -1,0 +1,430 @@
+id,biblioteca,modulo,escopo,tipo,linhas,n_comandos,codigo
+ARW-T001,arrow,arrow/api.py,factory,L,118,1,    return ArrowFactory(type)
+ARW-T002,arrow,arrow/arrow.py,Arrow.__init__,L,169,1,            tzinfo = parser.TzinfoParser.parse(tzinfo.zone)
+ARW-T003,arrow,arrow/arrow.py,Arrow.now,L,196,1,            tzinfo = dt_datetime.now().astimezone().tzinfo
+ARW-T004,arrow,arrow/arrow.py,Arrow.utcfromtimestamp,L,284,1,"            raise ValueError(f""The provided timestamp {timestamp!r} is invalid."")"
+ARW-T005,arrow,arrow/arrow.py,Arrow.span_range,L,719,1,                break
+ARW-T006,arrow,arrow/arrow.py,Arrow.span_range,L,721,1,                break
+ARW-T007,arrow,arrow/arrow.py,Arrow.shift,L,1053,1,            current = dateutil_tz.resolve_imaginary(current)
+ARW-T008,arrow,arrow/arrow.py,Arrow.humanize,L,1173,1,                dt = other.replace(tzinfo=self._datetime.tzinfo)
+ARW-T009,arrow,arrow/arrow.py,Arrow.humanize,L,1184,1,            granularity = granularity[0]
+ARW-T010,arrow,arrow/arrow.py,Arrow.humanize,L,1196-1197,2,"                    seconds = sign * delta_second
+                    return locale.describe("
+ARW-T011,arrow,arrow/arrow.py,Arrow.humanize,L,1228,1,                    calendar_months += 1
+ARW-T012,arrow,arrow/arrow.py,Arrow.humanize,L,1270,1,"                        return locale.describe(""now"", only_distance=only_distance)"
+ARW-T013,arrow,arrow/arrow.py,Arrow.humanize,L,1297,1,                    raise ValueError(
+ARW-T014,arrow,arrow/arrow.py,Arrow.humanize,L,1339,1,            raise ValueError(
+ARW-T015,arrow,arrow/arrow.py,Arrow.dehumanize,L,1377,1,            raise ValueError(
+ARW-T016,arrow,arrow/arrow.py,Arrow.dehumanize,L,1401,1,                strings_to_search = unit_object
+ARW-T017,arrow,arrow/arrow.py,Arrow.is_between,L,1528,1,"            raise TypeError(f""Cannot parse end date argument type of {type(start)!r}."")"
+ARW-T018,arrow,arrow/arrow.py,Arrow.dst,L,1621,1,        return self._datetime.dst()
+ARW-T019,arrow,arrow/arrow.py,Arrow.__rsub__,L,1780,1,        return NotImplemented
+ARW-T020,arrow,arrow/arrow.py,Arrow.__gt__,L,1798,1,            return NotImplemented
+ARW-T021,arrow,arrow/arrow.py,Arrow.__ge__,L,1804,1,            return NotImplemented
+ARW-T022,arrow,arrow/arrow.py,Arrow.__le__,L,1816,1,            return NotImplemented
+ARW-T023,arrow,arrow/arrow.py,Arrow._get_tzinfo,L,1831-1832,2,"            except parser.ParserError:
+                raise ValueError(f""{tz_expr!r} not recognized as a timezone."")"
+ARW-T024,arrow,arrow/arrow.py,Arrow._get_datetime,L,1843-1847,4,"        elif util.is_timestamp(expr):
+            timestamp = float(expr)
+            return cls.utcfromtimestamp(timestamp).datetime
+        else:
+            raise ValueError(f""{expr!r} not recognized as a datetime or timestamp."")"
+ARW-T025,arrow,arrow/arrow.py,Arrow._get_frames,L,1859,1,"            return name[:-1], name, 1"
+ARW-T026,arrow,arrow/arrow.py,Arrow.strptime,D,372->375,0,        if tzinfo is None:    # desvio não exercitado -> linha 375
+ARW-T027,arrow,arrow/arrow.py,Arrow.span_range,D,716->718,0,"                if bounds[1] == "")"":    # desvio não exercitado -> linha 718"
+ARW-T028,arrow,arrow/arrow.py,Arrow.__getattr__,D,823->826,0,            if value is not None:    # desvio não exercitado -> linha 826
+ARW-T029,arrow,arrow/factory.py,ArrowFactory.get,L,196,1,            arg_count = 3
+ARW-T030,arrow,arrow/factory.py,ArrowFactory.get,L,200,1,            arg_count = 3
+ARW-T031,arrow,arrow/factory.py,ArrowFactory.get,L,209,1,                return self.type.now(tzinfo=tz)
+ARW-T032,arrow,arrow/factory.py,ArrowFactory.get,L,216,1,                arg = float(arg)
+ARW-T033,arrow,arrow/factory.py,ArrowFactory.get,L,220,1,"                raise TypeError(""Cannot parse argument of type None."")"
+ARW-T034,arrow,arrow/factory.py,ArrowFactory.get,L,279,1,                    raise TypeError(
+ARW-T035,arrow,arrow/factory.py,ArrowFactory.get,D,224->227,0,                if tz is None:    # desvio não exercitado -> linha 227
+ARW-T036,arrow,arrow/factory.py,ArrowFactory.now,D,335->338,0,"        elif not isinstance(tz, dt_tzinfo):    # desvio não exercitado -> linha 338"
+ARW-T037,arrow,arrow/formatter.py,DateTimeFormatter._format_token,L,102,1,"            return f""{dt.microsecond // 10:05d}"""
+ARW-T038,arrow,arrow/formatter.py,DateTimeFormatter._format_token,L,104,1,"            return f""{dt.microsecond // 100:04d}"""
+ARW-T039,arrow,arrow/formatter.py,DateTimeFormatter._format_token,D,138->-43,0,"        if token == ""W"":    # desvio não exercitado -> saída da função"
+ARW-T040,arrow,arrow/locales.py,get_locale_by_class_name,L,70-75,4,"    locale_cls: Optional[Type[Locale]] = globals().get(name)
+
+    if locale_cls is None:
+        raise ValueError(f""Unsupported locale {name!r}."")
+
+    return locale_cls()"
+ARW-T041,arrow,arrow/locales.py,Locale.__init_subclass__,L,122,1,"                raise LookupError(f""Duplicated locale name: {locale_name}"")"
+ARW-T042,arrow,arrow/locales.py,Locale.meridian,L,257,1,        return None
+ARW-T043,arrow,arrow/locales.py,Locale._ordinal_number,L,267,1,"        return f""{n}"""
+ARW-T044,arrow,arrow/locales.py,EnglishLocale.describe,L,400,1,"            humanized = ""instantly"""
+ARW-T045,arrow,arrow/locales.py,ItalianLocale._ordinal_number,L,475,1,"        return f""{n}º"""
+ARW-T046,arrow,arrow/locales.py,SpanishLocale._ordinal_number,L,550,1,"        return f""{n}º"""
+ARW-T047,arrow,arrow/locales.py,FrenchBaseLocale._ordinal_number,L,609-611,3,"        if abs(n) == 1:
+            return f""{n}er""
+        return f""{n}e"""
+ARW-T048,arrow,arrow/locales.py,FinnishLocale._format_timeframe,L,935-943,6,"        form = self.timeframes[timeframe]
+
+        if isinstance(form, Mapping):
+            if delta < 0:
+                form = form[""past""]
+            else:
+                form = form[""future""]
+
+        return form.format(abs(delta))"
+ARW-T049,arrow,arrow/locales.py,FinnishLocale._ordinal_number,L,946,1,"        return f""{n}."""
+ARW-T050,arrow,arrow/locales.py,KoreanLocale._ordinal_number,L,1224-1239,4,"        ordinals = [
+            ""0"",
+            ""첫"",
+            ""두"",
+            ""세"",
+            ""네"",
+            ""다섯"",
+            ""여섯"",
+            ""일곱"",
+            ""여덟"",
+            ""아홉"",
+            ""열"",
+        ]
+        if n < len(ordinals):
+            return f""{ordinals[n]}번째""
+        return f""{n}번째"""
+ARW-T051,arrow,arrow/locales.py,KoreanLocale._format_relative,L,1248-1250,3,"            special = self.special_dayframes.get(int(delta))
+            if special:
+                return special"
+ARW-T052,arrow,arrow/locales.py,KoreanLocale._format_relative,L,1252-1254,3,"            special = self.special_yearframes.get(int(delta))
+            if special:
+                return special"
+ARW-T053,arrow,arrow/locales.py,SlavicBaseLocale._format_timeframe,L,1334-1345,9,"        form = self.timeframes[timeframe]
+        delta = abs(delta)
+
+        if isinstance(form, Mapping):
+            if delta % 10 == 1 and delta % 100 != 11:
+                form = form[""singular""]
+            elif 2 <= delta % 10 <= 4 and (delta % 100 < 10 or delta % 100 >= 20):
+                form = form[""dual""]
+            else:
+                form = form[""plural""]
+
+        return form.format(delta)"
+ARW-T054,arrow,arrow/locales.py,GermanBaseLocale._ordinal_number,L,2107,1,"        return f""{n}."""
+ARW-T055,arrow,arrow/locales.py,GermanBaseLocale.describe,L,2126-2130,2,"        humanized: str = self.timeframes_only_distance[timeframe].format(
+            trunc(abs(delta))
+        )
+
+        return humanized"
+ARW-T056,arrow,arrow/locales.py,NorwegianLocale._ordinal_number,L,2229,1,"        return f""{n}."""
+ARW-T057,arrow,arrow/locales.py,NewNorwegianLocale._ordinal_number,L,2300,1,"        return f""{n}."""
+ARW-T058,arrow,arrow/locales.py,TagalogLocale._ordinal_number,L,2448,1,"        return f""ika-{n}"""
+ARW-T059,arrow,arrow/locales.py,ArabicLocale._format_timeframe,L,2745-2755,9,"        form = self.timeframes[timeframe]
+        delta = abs(delta)
+        if isinstance(form, Mapping):
+            if delta == 2:
+                form = form[""2""]
+            elif 2 < delta <= 10:
+                form = form[""ten""]
+            else:
+                form = form[""higher""]
+
+        return form.format(delta)"
+ARW-T060,arrow,arrow/locales.py,IcelandicLocale._format_timeframe,L,2896-2910,8,"        form = self.timeframes[timeframe]
+
+        if isinstance(form, Mapping):
+            if delta < 0:
+                form = form[""past""]
+            elif delta > 0:
+                form = form[""future""]
+            else:
+                raise ValueError(
+                    ""Icelandic Locale does not support units with a delta of zero. ""
+                    ""Please consider making a contribution to fix this issue.""
+                )
+                # FIXME: handle when delta is 0
+
+        return form.format(abs(delta))"
+ARW-T061,arrow,arrow/locales.py,DanishLocale._ordinal_number,L,3048,1,"        return f""{n}."""
+ARW-T062,arrow,arrow/locales.py,CzechLocale._format_timeframe,L,3297-3319,15,"        abs_delta = abs(delta)
+        form = self.timeframes[timeframe]
+
+        if isinstance(form, str):
+            return form.format(abs_delta)
+
+        if delta == 0:
+            key = ""zero""  # And *never* use 0 in the singular!
+        elif delta < 0:
+            key = ""past""
+        else:
+            # Needed since both regular future and future-singular and future-paucal cases
+            if ""future-singular"" not in form:
+                key = ""future""
+            elif 2 <= abs_delta % 10 <= 4 and (
+                abs_delta % 100 < 10 or abs_delta % 100 >= 20
+            ):
+                key = ""future-singular""
+            else:
+                key = ""future-paucal""
+
+        form: str = form[key]
+        return form.format(abs_delta)"
+ARW-T063,arrow,arrow/locales.py,SlovakLocale._format_timeframe,L,3428-3449,15,"        abs_delta = abs(delta)
+        form = self.timeframes[timeframe]
+
+        if isinstance(form, str):
+            return form.format(abs_delta)
+
+        if delta == 0:
+            key = ""zero""  # And *never* use 0 in the singular!
+        elif delta < 0:
+            key = ""past""
+        else:
+            if ""future-singular"" not in form:
+                key = ""future""
+            elif 2 <= abs_delta % 10 <= 4 and (
+                abs_delta % 100 < 10 or abs_delta % 100 >= 20
+            ):
+                key = ""future-singular""
+            else:
+                key = ""future-paucal""
+
+        form: str = form[key]
+        return form.format(abs_delta)"
+ARW-T064,arrow,arrow/locales.py,HebrewLocale._format_timeframe,L,3605-3615,9,"        form = self.timeframes[timeframe]
+        delta = abs(delta)
+        if isinstance(form, Mapping):
+            if delta == 2:
+                form = form[""2""]
+            elif delta == 0 or 2 < delta <= 10:
+                form = form[""ten""]
+            else:
+                form = form[""higher""]
+
+        return form.format(delta)"
+ARW-T065,arrow,arrow/locales.py,HebrewLocale.describe_multi,L,3629-3645,14,"        humanized = """"
+        for index, (timeframe, delta) in enumerate(timeframes):
+            last_humanized = self._format_timeframe(timeframe, trunc(delta))
+            if index == 0:
+                humanized = last_humanized
+            elif index == len(timeframes) - 1:  # Must have at least 2 items
+                humanized += "" "" + self.and_word
+                if last_humanized[0].isdecimal():
+                    humanized += ""־""
+                humanized += last_humanized
+            else:  # Don't add for the last one
+                humanized += "", "" + last_humanized
+
+        if not only_distance:
+            humanized = self._format_relative(humanized, timeframe, trunc(delta))
+
+        return humanized"
+ARW-T066,arrow,arrow/locales.py,HungarianLocale._format_timeframe,L,3926-3934,6,"        form = self.timeframes[timeframe]
+
+        if isinstance(form, Mapping):
+            if delta > 0:
+                form = form[""future""]
+            else:
+                form = form[""past""]
+
+        return form.format(abs(delta))"
+ARW-T067,arrow,arrow/locales.py,EsperantoLocale._ordinal_number,L,4006,1,"        return f""{n}a"""
+ARW-T068,arrow,arrow/locales.py,ThaiLocale.year_full,L,4082-4083,2,"        year += self.BE_OFFSET
+        return f""{year:04d}"""
+ARW-T069,arrow,arrow/locales.py,ThaiLocale.year_abbreviation,L,4087-4088,2,"        year += self.BE_OFFSET
+        return f""{year:04d}""[2:]"
+ARW-T070,arrow,arrow/locales.py,ThaiLocale._format_relative,L,4097-4106,7,"        if timeframe == ""now"":
+            return humanized
+
+        direction = self.past if delta < 0 else self.future
+        relative_string = direction.format(humanized)
+
+        if timeframe == ""seconds"":
+            relative_string = relative_string.replace("" "", """")
+
+        return relative_string"
+ARW-T071,arrow,arrow/locales.py,LaotianLocale.year_full,L,4189-4190,2,"        year += self.BE_OFFSET
+        return f""{year:04d}"""
+ARW-T072,arrow,arrow/locales.py,LaotianLocale.year_abbreviation,L,4194-4195,2,"        year += self.BE_OFFSET
+        return f""{year:04d}""[2:]"
+ARW-T073,arrow,arrow/locales.py,LaotianLocale._format_relative,L,4204-4213,7,"        if timeframe == ""now"":
+            return humanized
+
+        direction = self.past if delta < 0 else self.future
+        relative_string = direction.format(humanized)
+
+        if timeframe == ""seconds"":
+            relative_string = relative_string.replace("" "", """")
+
+        return relative_string"
+ARW-T074,arrow,arrow/locales.py,BengaliLocale._ordinal_number,L,4284-4294,11,"        if n > 10 or n == 0:
+            return f""{n}তম""
+        if n in [1, 5, 7, 8, 9, 10]:
+            return f""{n}ম""
+        if n in [2, 3]:
+            return f""{n}য়""
+        if n == 4:
+            return f""{n}র্থ""
+        if n == 6:
+            return f""{n}ষ্ঠ""
+        return """""
+ARW-T075,arrow,arrow/locales.py,EstonianLocale._format_timeframe,L,4716-4721,5,"        form = self.timeframes[timeframe]
+        if delta > 0:
+            _form = form[""future""]
+        else:
+            _form = form[""past""]
+        return _form.format(abs(delta))"
+ARW-T076,arrow,arrow/locales.py,CroatianLocale._format_timeframe,L,4968-4976,7,"        form = self.timeframes[timeframe]
+        delta = abs(delta)
+        if isinstance(form, Mapping):
+            if 1 < delta <= 4:
+                form = form[""double""]
+            else:
+                form = form[""higher""]
+
+        return form.format(delta)"
+ARW-T077,arrow,arrow/locales.py,MalteseLocale._format_timeframe,L,5299-5307,7,"        form = self.timeframes[timeframe]
+        delta = abs(delta)
+        if isinstance(form, Mapping):
+            if delta == 2:
+                form = form[""dual""]
+            else:
+                form = form[""plural""]
+
+        return form.format(delta)"
+ARW-T078,arrow,arrow/locales.py,OdiaLocale._ordinal_number,L,5466-5476,11,"        if n > 10 or n == 0:
+            return f""{n}ତମ""
+        if n in [1, 5, 7, 8, 9, 10]:
+            return f""{n}ମ""
+        if n in [2, 3]:
+            return f""{n}ୟ""
+        if n == 4:
+            return f""{n}ର୍ଥ""
+        if n == 6:
+            return f""{n}ଷ୍ଠ""
+        return """""
+ARW-T079,arrow,arrow/locales.py,SerbianLocale._format_timeframe,L,5559-5567,7,"        form = self.timeframes[timeframe]
+        delta = abs(delta)
+        if isinstance(form, Mapping):
+            if 1 < delta <= 4:
+                form = form[""double""]
+            else:
+                form = form[""higher""]
+
+        return form.format(delta)"
+ARW-T080,arrow,arrow/locales.py,LuxembourgishLocale._ordinal_number,L,5653,1,"        return f""{n}."""
+ARW-T081,arrow,arrow/locales.py,LuxembourgishLocale.describe,L,5661-5669,4,"        if not only_distance:
+            return super().describe(timeframe, delta, only_distance)
+
+        # Luxembourgish uses a different case without 'in' or 'ago'
+        humanized: str = self.timeframes_only_distance[timeframe].format(
+            trunc(abs(delta))
+        )
+
+        return humanized"
+ARW-T082,arrow,arrow/locales.py,ZuluLocale._format_timeframe,L,5700-5712,9,"        abs_delta = abs(delta)
+        form = self.timeframes[timeframe]
+
+        if isinstance(form, str):
+            return form.format(abs_delta)
+
+        if delta > 0:
+            key = ""future""
+        else:
+            key = ""past""
+        form = form[key]
+
+        return form.format(abs_delta)"
+ARW-T083,arrow,arrow/locales.py,TamilLocale._ordinal_number,L,5848-5853,5,"        if n == 1:
+            return f""{n}வது""
+        elif n >= 0:
+            return f""{n}ஆம்""
+        else:
+            return """""
+ARW-T084,arrow,arrow/locales.py,SinhalaLocale._format_timeframe,L,6094-6106,9,"        abs_delta = abs(delta)
+        form = self.timeframes[timeframe]
+
+        if isinstance(form, str):
+            return form.format(abs_delta)
+
+        if delta > 0:
+            key = ""future""
+        else:
+            key = ""past""
+        form = form[key]
+
+        return form.format(abs_delta)"
+ARW-T085,arrow,arrow/locales.py,SinhalaLocale.describe,L,6121-6126,4,"        if not only_distance:
+            return super().describe(timeframe, delta, only_distance)
+        # Sinhala uses a different case without 'in' or 'ago'
+        humanized = self.timeframes_only_distance[timeframe].format(trunc(abs(delta)))
+
+        return humanized"
+ARW-T086,arrow,arrow/locales.py,AmharicLocale._ordinal_number,L,6460,1,"        return f""{n}ኛ"""
+ARW-T087,arrow,arrow/locales.py,AmharicLocale._format_timeframe,L,6467-6479,9,"        abs_delta = abs(delta)
+        form = self.timeframes[timeframe]
+
+        if isinstance(form, str):
+            return form.format(abs_delta)
+
+        if delta > 0:
+            key = ""future""
+        else:
+            key = ""past""
+        form = form[key]
+
+        return form.format(abs_delta)"
+ARW-T088,arrow,arrow/locales.py,AmharicLocale.describe,L,6494-6498,4,"        if not only_distance:
+            return super().describe(timeframe, delta, only_distance)
+        humanized = self.timeframes_only_distance[timeframe].format(trunc(abs(delta)))
+
+        return humanized"
+ARW-T089,arrow,arrow/locales.py,Locale.describe_multi,D,163->165,0,        if self.and_word:    # desvio não exercitado -> linha 165
+ARW-T090,arrow,arrow/locales.py,Locale.describe_multi,D,171->177,0,"            for _, unit_value in timeframes:    # desvio não exercitado -> linha 177"
+ARW-T091,arrow,arrow/locales.py,Locale.describe_multi,D,172->171,0,                if trunc(unit_value) != 0:    # desvio não exercitado -> linha 171
+ARW-T092,arrow,arrow/locales.py,Locale.month_number,D,224->230,0,        if self._month_name_to_ordinal is None:    # desvio não exercitado -> linha 230
+ARW-T093,arrow,arrow/parser.py,<módulo>,L,28-29,2,"except ImportError:
+    from backports.zoneinfo import ZoneInfo, ZoneInfoNotFoundError  # type: ignore[no-redef]"
+ARW-T094,arrow,arrow/parser.py,DateTimeParser.__init__,L,246,1,            self._generate_pattern_re = lru_cache(maxsize=cache_size)(  # type: ignore
+ARW-T095,arrow,arrow/parser.py,DateTimeParser.parse_iso,L,312,1,"                date_string, time_string = datetime_string.split("" "", 1)"
+ARW-T096,arrow,arrow/parser.py,DateTimeParser.parse_iso,L,323,1,                raise ParserError(
+ARW-T097,arrow,arrow/parser.py,DateTimeParser.parse_iso,L,359,1,"                time_string = ""HH"""
+ARW-T098,arrow,arrow/parser.py,DateTimeParser.parse_iso,L,362,1,"                formats = [f""{f} {time_string}"" for f in formats]"
+ARW-T099,arrow,arrow/parser.py,DateTimeParser.parse,L,410-411,2,"        except re.error as e:
+            raise ParserMatchError("
+ARW-T100,arrow,arrow/parser.py,DateTimeParser.parse,L,426,1,"                value = match.group(""value"")"
+ARW-T101,arrow,arrow/parser.py,DateTimeParser.parse,L,433,1,                raise ParserMatchError(
+ARW-T102,arrow,arrow/parser.py,DateTimeParser._generate_pattern_re,L,476-477,2,"            except KeyError:
+                raise ParserError(f""Unrecognized token {token!r}."")"
+ARW-T103,arrow,arrow/parser.py,DateTimeParser._parse_token,L,632,1,"            parts[""day""] = int(value)"
+ARW-T104,arrow,arrow/parser.py,DateTimeParser._parse_token,L,636-639,2,"            day_of_week = [x.lower() for x in self.locale.day_names].index(
+                value.lower()
+            )
+            parts[""day_of_week""] = day_of_week - 1"
+ARW-T105,arrow,arrow/parser.py,DateTimeParser._parse_token,L,668,1,                rounding = 1
+ARW-T106,arrow,arrow/parser.py,DateTimeParser._parse_token,L,687,1,                    raise ParserMatchError(
+ARW-T107,arrow,arrow/parser.py,DateTimeParser._build_datetime,L,744,1,                raise ParserError(
+ARW-T108,arrow,arrow/parser.py,DateTimeParser._build_datetime,L,749,1,                raise ParserError(
+ARW-T109,arrow,arrow/parser.py,DateTimeParser._build_datetime,L,756-757,2,"            except ValueError:
+                raise ParserError("
+ARW-T110,arrow,arrow/parser.py,DateTimeParser._build_datetime,L,770-781,7,"            year = parts.get(""year"", 1970)
+            month = parts.get(""month"", 1)
+            day = 1
+
+            # dddd => first day of week after epoch
+            # dddd YYYY => first day of week in specified year
+            # dddd MM YYYY => first day of week in specified year and month
+            # dddd MM => first day after epoch in specified month
+            next_weekday_dt = next_weekday(datetime(year, month, day), day_of_week)
+            parts[""year""] = next_weekday_dt.year
+            parts[""month""] = next_weekday_dt.month
+            parts[""day""] = next_weekday_dt.day"
+ARW-T111,arrow,arrow/parser.py,DateTimeParser._build_datetime,L,794,1,"                raise ParserError(""Midnight at the end of day must not contain minutes"")"
+ARW-T112,arrow,arrow/parser.py,DateTimeParser._build_datetime,L,796,1,"                raise ParserError(""Midnight at the end of day must not contain seconds"")"
+ARW-T113,arrow,arrow/parser.py,DateTimeParser._build_datetime,L,798,1,                raise ParserError(
+ARW-T114,arrow,arrow/parser.py,DateTimeParser._parse_multiformat,L,856-857,2,"            supported_formats = "", "".join(formats)
+            raise ParserError("
+ARW-T115,arrow,arrow/parser.py,DateTimeParser._parse_token,D,690->-591,0,"            elif value in (self.locale.meridians[""pm""], self.locale.meridians[""PM""]):    # desvio não exercitado -> saída da função"
+ARW-T116,arrow,arrow/parser.py,DateTimeParser._parse_token,D,692->-591,0,"        elif token == ""W"":    # desvio não exercitado -> saída da função"
+ARW-T117,arrow,arrow/parser.py,DateTimeParser._parse_multiformat,D,848->855,0,        for fmt in formats:    # desvio não exercitado -> linha 855
+ARW-T118,arrow,arrow/util.py,next_weekday,L,40-42,3,"    if weekday < 0 or weekday > 6:
+        raise ValueError(""Weekday must be between 0 (Monday) and 6 (Sunday)."")
+    return cast("
+ARW-T119,arrow,arrow/util.py,is_timestamp,L,51,1,        return False
+ARW-T120,arrow,arrow/util.py,validate_ordinal,L,70,1,"        raise ValueError(f""Ordinal {value} is out of range."")"
+ARW-T121,arrow,arrow/util.py,normalize_timestamp,L,81,1,"            raise ValueError(f""The specified timestamp {timestamp!r} is too large."")"
+ARW-T122,arrow,arrow/util.py,iso_to_gregorian,L,96,1,"        raise ValueError(""ISO Calendar week value must be between 1-53."")"
+ARW-T123,arrow,arrow/util.py,iso_to_gregorian,L,99,1,"        raise ValueError(""ISO Calendar day value must be between 1-7"")"
