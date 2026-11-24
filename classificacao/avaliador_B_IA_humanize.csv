@@ -1,0 +1,41 @@
+id,modulo,escopo,linhas,categoria,alcancavel,justificativa
+HUM-T001,humanize/filesize.py,naturalsize,108,LIM,sim,Arredondamento leva a mantissa a base (ex.: 999999) e sobe um sufixo.
+HUM-T002,humanize/i18n.py,_get_default_locale_path,47,CFG,nao,Depende do ambiente: módulo carregado sem __spec__/pacote.
+HUM-T003,humanize/i18n.py,activate,86-90,CFG,nao,Erro só quando o caminho padrão de locale não pode ser determinado no ambiente.
+HUM-T004,humanize/number.py,_format_not_finite,83-91,VAL,sim,Normaliza entradas não finitas (NaN/Inf) para texto fixo.
+HUM-T005,humanize/number.py,ordinal,135,VAL,sim,Desvia entrada não finita (NaN/Inf) para _format_not_finite.
+HUM-T006,humanize/number.py,intcomma,186,VAL,sim,Desvia entrada não finita (NaN/Inf) para _format_not_finite.
+HUM-T007,humanize/number.py,intcomma,193,VAL,sim,Desvia entrada não finita (NaN/Inf) para _format_not_finite.
+HUM-T008,humanize/number.py,intword,263,VAL,sim,Desvia entrada não finita (NaN/Inf) para _format_not_finite.
+HUM-T009,humanize/number.py,intword,292-293,LIM,sim,Arredondamento atinge a próxima potência e promove a unidade em intword.
+HUM-T010,humanize/number.py,apnumber,334,VAL,sim,Desvia entrada não finita (NaN/Inf) para _format_not_finite.
+HUM-T011,humanize/number.py,fractional,387,VAL,sim,Desvia entrada não finita (NaN/Inf) para _format_not_finite.
+HUM-T012,humanize/number.py,scientific,450,VAL,sim,Desvia entrada não finita (NaN/Inf) para _format_not_finite.
+HUM-T013,humanize/number.py,clamp,515,VAL,sim,Desvia entrada não finita (NaN/Inf) para _format_not_finite.
+HUM-T014,humanize/number.py,clamp,532-536,VAL,sim,Rejeita format que não é string nem callable em clamp.
+HUM-T015,humanize/number.py,metric,586,VAL,sim,Desvia entrada não finita (NaN/Inf) para _format_not_finite.
+HUM-T016,humanize/number.py,metric,597-600,LIM,sim,Arredondamento (9.999 -> 10) promove o expoente em metric.
+HUM-T017,humanize/number.py,metric,607,LIM,sim,Valor com expoente entre 0 e 2 não recebe prefixo SI.
+HUM-T018,humanize/number.py,metric,610,LIM,sim,"Sem unidade nem prefixo, ou unidade angular, omite o espaço."
+HUM-T019,humanize/time.py,Unit.__lt__,46,VAL,sim,Unit.__lt__ retorna NotImplemented para comparação com outro tipo.
+HUM-T020,humanize/time.py,naturaldelta,202,LIM,sim,Minutos arredondados para 60 descritos como 'an hour'.
+HUM-T021,humanize/time.py,naturaldelta,212,LIM,sim,Horas arredondadas para 24 descritas como 'a day'.
+HUM-T022,humanize/time.py,naturaldelta,221,CFG,sim,Depende da flag months=False em naturaldelta.
+HUM-T023,humanize/time.py,naturaldelta,226-232,LIM,sim,"Menos de um ano com meses arredondados (1, 12 ou vários)."
+HUM-T024,humanize/time.py,naturaldelta,239,LIM,sim,Um ano mais alguns dias sem completar mês.
+HUM-T025,humanize/time.py,naturaldelta,245-249,LIM,sim,Um ano com meses arredondados para 12 ou vários meses.
+HUM-T026,humanize/time.py,naturaldelta,256-257,LIM,sim,Diferenças de dois anos ou mais.
+HUM-T027,humanize/time.py,naturalday,339,LIM,sim,naturalday com datetime com fuso calcula 'hoje' nesse fuso.
+HUM-T028,humanize/time.py,naturalday,346-348,EXC,sim,Captura OverflowError/ValueError ao construir a data (objeto com campos fora da faixa).
+HUM-T029,humanize/time.py,naturaldate,370,LIM,sim,naturaldate com datetime com fuso calcula 'hoje' nesse fuso.
+HUM-T030,humanize/time.py,naturaldate,374-379,EXC,sim,Captura AttributeError/OverflowError/ValueError e devolve str(value).
+HUM-T031,humanize/time.py,_suitable_minimum_unit,454-455,VAL,sim,Rejeita unidade mínima suprimida sem substituta maior disponível.
+HUM-T032,humanize/time.py,precisedelta,621-622,LIM,sim,Promoção por arredondamento de milissegundos para segundo.
+HUM-T033,humanize/time.py,precisedelta,624-625,LIM,sim,Promoção por arredondamento de segundos para minuto.
+HUM-T034,humanize/time.py,precisedelta,627-628,LIM,sim,Promoção por arredondamento de minutos para hora.
+HUM-T035,humanize/time.py,precisedelta,630-631,LIM,sim,Promoção por arredondamento de horas para dia.
+HUM-T036,humanize/time.py,precisedelta,635-636,LIM,sim,Promoção de 31 dias para um mês.
+HUM-T037,humanize/time.py,precisedelta,638-639,LIM,sim,Promoção de 12 meses para um ano.
+HUM-T038,humanize/time.py,_suppress_lower_units,468->473,MORTO,nao,"min_unit é sempre membro de Unit, então o laço sempre encontra o break."
+HUM-T039,humanize/time.py,precisedelta,655->674,MORTO,nao,"O laço percorre todas as unidades e sempre atinge min_unit, executando o break."
+HUM-T040,humanize/time.py,precisedelta,663->665,MORTO,nao,"Anos fracionários só ocorrem quando YEARS é a unidade mínima, caso capturado pelo ramo anterior."

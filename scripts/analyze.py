@@ -129,9 +129,39 @@ def main():
     for l in LIBS:
         n = sum(cont[l].values())
         md.append(f"- {l}: {cont[l]['EXC'] + cont[l]['VAL']}/{n} = {100 * (cont[l]['EXC'] + cont[l]['VAL']) / n:.1f}%")
-    md += ["", "> Classificação de um único avaliador (A). O Kappa de Cohen só pode ser calculado depois que o",
-           "> Avaliador B preencher `classificacao/avaliador_B_EM_BRANCO_<lib>.csv` (renomeado para",
-           "> `avaliador_B_<lib>.csv`) e rodar `python scripts/kappa.py --todas`.", ""]
+    # Concordância entre avaliadores
+    import sys
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from kappa import carregar, cohen_kappa, interpretar
+    md += ["", "### Concordância entre avaliadores (antes da resolução de divergências)", "",
+           "Avaliador A e Avaliador B são duas instâncias de IA (Claude) que classificaram de forma independente;",
+           "B trabalhou numa pasta isolada, só com o livro de códigos, os trechos e o código-fonte, sem acesso à classificação A.", "",
+           "| Biblioteca | n | Concordância observada | Kappa de Cohen | Interpretação (Landis & Koch) |",
+           "|---|---:|---:|---:|---|"]
+    ta, tb = [], []
+    contB = {}
+    for l in LIBS:
+        pb = ROOT / "classificacao" / f"avaliador_B_IA_{l}.csv"
+        if not pb.exists():
+            continue
+        A_, B_ = carregar(ROOT / "classificacao" / f"avaliador_A_{l}.csv"), carregar(pb)
+        ids = sorted(A_)
+        a, b = [A_[i] for i in ids], [B_[i] for i in ids]
+        ta += a; tb += b
+        contB[l] = Counter(b)
+        k, po, _ = cohen_kappa(a, b)
+        md.append(f"| {l} | {len(ids)} | {100 * po:.1f}% | {k:.3f} | {interpretar(k)} |")
+    if ta:
+        k, po, _ = cohen_kappa(ta, tb)
+        md.append(f"| **todas** | {len(ta)} | {100 * po:.1f}% | {k:.3f} | {interpretar(k)} |")
+        tB = sum(sum(c.values()) for c in contB.values())
+        evB = sum(contB[l]["EXC"] + contB[l]["VAL"] for l in contB)
+        md += ["", "Distribuição segundo o Avaliador B: " + ", ".join(
+            f"{NOMES[c]} {sum(contB[l][c] for l in contB)}" for c in CATS) +
+            f". Exceções + validações = {evB}/{tB} = {100 * evB / tB:.1f}% — hipótese "
+            + ("sustentada" if evB / tB > 0.5 else "também não sustentada") + " pelo Avaliador B.",
+            "", "Matriz de confusão e lista de divergências: `python scripts/kappa.py --todas` e "
+            "`classificacao/divergencias_todas.csv` (coluna `consenso` a preencher na reunião).", ""]
     with open(RES / "qp2_distribuicao.csv", "w", newline="") as fh:
         w = csv.DictWriter(fh, fieldnames=["biblioteca", "categoria", "trechos"])
         w.writeheader()

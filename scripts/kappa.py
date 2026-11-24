@@ -80,8 +80,12 @@ def relatorio(pares: list[tuple[Path, Path]], rotulo: str) -> None:
 def main(argv: list[str]) -> None:
     if argv == ["--todas"]:
         cls = ROOT / "classificacao"
-        pares = [(cls / f"avaliador_A_{l}.csv", cls / f"avaliador_B_{l}.csv") for l in ("tinydb", "arrow", "humanize")]
-        pares = [p for p in pares if p[1].exists()]
+        pares = []
+        for l in ("tinydb", "arrow", "humanize"):
+            for nome in (f"avaliador_B_{l}.csv", f"avaliador_B_IA_{l}.csv"):
+                if (cls / nome).exists():
+                    pares.append((cls / f"avaliador_A_{l}.csv", cls / nome))
+                    break
         relatorio(pares, "todas")
     elif len(argv) == 2:
         pa, pb = map(Path, argv)

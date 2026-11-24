@@ -1,0 +1,124 @@
+id,modulo,escopo,linhas,categoria,alcancavel,justificativa
+ARW-T001,arrow/api.py,factory,118,OUTRO,sim,Função pública arrow.factory() simplesmente não exercitada; nenhuma categoria se aplica.
+ARW-T002,arrow/arrow.py,Arrow.__init__,169,CFG,sim,Depende da dependência opcional pytz (tzinfo com localize/zone).
+ARW-T003,arrow/arrow.py,Arrow.now,196,LIM,sim,Arrow.now() chamado diretamente sem tzinfo usa o fuso local (factory sempre passa tz).
+ARW-T004,arrow/arrow.py,Arrow.utcfromtimestamp,284,VAL,sim,Rejeita timestamp inválido em utcfromtimestamp.
+ARW-T005,arrow/arrow.py,Arrow.span_range,719,LIM,sim,Interrompe span_range exato quando o início do span coincide com o fim do intervalo.
+ARW-T006,arrow/arrow.py,Arrow.span_range,721,MORTO,nao,"Com exact=True floor é o próprio elemento do range (<= end), logo floor - 1µs nunca é igual a end."
+ARW-T007,arrow/arrow.py,Arrow.shift,1053,LIM,sim,Resolve horário imaginário ao deslocar para dentro de uma transição de horário de verão.
+ARW-T008,arrow/arrow.py,Arrow.humanize,1173,LIM,sim,humanize com datetime ingênuo (sem tzinfo) como referência.
+ARW-T009,arrow/arrow.py,Arrow.humanize,1184,LIM,sim,Lista de granularidade com um único elemento é convertida para string.
+ARW-T010,arrow/arrow.py,Arrow.humanize,1196-1197,LIM,sim,Diferença entre 10 e 59 segundos descrita como 'seconds'.
+ARW-T011,arrow/arrow.py,Arrow.humanize,1228,LIM,sim,Ajuste de calendário: mais de 14 dias restantes conta como mês adicional.
+ARW-T012,arrow/arrow.py,Arrow.humanize,1270,LIM,sim,Granularidade 'second' com diferença menor que 2 s retorna 'now'.
+ARW-T013,arrow/arrow.py,Arrow.humanize,1297,VAL,sim,Rejeita string de granularidade inválida.
+ARW-T014,arrow/arrow.py,Arrow.humanize,1339,VAL,sim,Rejeita lista de granularidade com unidades inválidas.
+ARW-T015,arrow/arrow.py,Arrow.dehumanize,1377,VAL,sim,Rejeita locale não suportado por dehumanize.
+ARW-T016,arrow/arrow.py,Arrow.dehumanize,1401,CFG,sim,"Depende da localidade: timeframes com formas em dicionário (ex.: ru, pl) no dehumanize."
+ARW-T017,arrow/arrow.py,Arrow.is_between,1528,VAL,sim,Rejeita argumento end que não é Arrow em is_between.
+ARW-T018,arrow/arrow.py,Arrow.dst,1621,OUTRO,sim,Método público dst() apenas delega ao datetime e não foi chamado; nenhuma categoria se aplica.
+ARW-T019,arrow/arrow.py,Arrow.__rsub__,1780,VAL,sim,Retorna NotImplemented para operando de tipo não suportado em subtração reversa.
+ARW-T020,arrow/arrow.py,Arrow.__gt__,1798,VAL,sim,Retorna NotImplemented ao comparar com tipo não suportado.
+ARW-T021,arrow/arrow.py,Arrow.__ge__,1804,VAL,sim,Retorna NotImplemented ao comparar com tipo não suportado.
+ARW-T022,arrow/arrow.py,Arrow.__le__,1816,VAL,sim,Retorna NotImplemented ao comparar com tipo não suportado.
+ARW-T023,arrow/arrow.py,Arrow._get_tzinfo,1831-1832,EXC,sim,Captura ParserError do parser de fuso e relança como ValueError (ex.: range com tz inválido).
+ARW-T024,arrow/arrow.py,Arrow._get_datetime,1843-1847,VAL,sim,Normaliza timestamp para datetime ou rejeita expressão inválida (ex.: end de range como número ou string).
+ARW-T025,arrow/arrow.py,Arrow._get_frames,1859,LIM,sim,Aceita nome de frame no plural (ex.: 'days') em range/span.
+ARW-T026,arrow/arrow.py,Arrow.strptime,372->375,LIM,sim,strptime com tzinfo explícito ignora o tz obtido do formato.
+ARW-T027,arrow/arrow.py,Arrow.span_range,716->718,LIM,sim,span_range exato com bounds de fechamento ']' não subtrai microssegundo do último span.
+ARW-T028,arrow/arrow.py,Arrow.__getattr__,823->826,LIM,sim,Acesso a atributo inexistente/None cai em object.__getattribute__ (AttributeError).
+ARW-T029,arrow/factory.py,ArrowFactory.get,196,LIM,sim,arrow.get com mais de um kwarg repassa ao construtor.
+ARW-T030,arrow/factory.py,ArrowFactory.get,200,LIM,sim,arrow.get com um único kwarg que não é tzinfo repassa ao construtor.
+ARW-T031,arrow/factory.py,ArrowFactory.get,209,LIM,sim,arrow.get() sem argumentos com tzinfo em string.
+ARW-T032,arrow/factory.py,ArrowFactory.get,216,VAL,sim,Normaliza argumento Decimal para float.
+ARW-T033,arrow/factory.py,ArrowFactory.get,220,VAL,sim,Rejeita argumento None em arrow.get.
+ARW-T034,arrow/factory.py,ArrowFactory.get,279,VAL,sim,Rejeita segundo argumento de tipo inválido junto com date.
+ARW-T035,arrow/factory.py,ArrowFactory.get,224->227,LIM,sim,Timestamp com tzinfo explícito em arrow.get.
+ARW-T036,arrow/factory.py,ArrowFactory.now,335->338,LIM,sim,arrow.now com objeto tzinfo já pronto (não string).
+ARW-T037,arrow/formatter.py,DateTimeFormatter._format_token,102,LIM,sim,Token de formatação particular SSSSS.
+ARW-T038,arrow/formatter.py,DateTimeFormatter._format_token,104,LIM,sim,Token de formatação particular SSSS.
+ARW-T039,arrow/formatter.py,DateTimeFormatter._format_token,138->-43,LIM,sim,"Token casado pela regex mas não tratado (ex.: 'YYY', 'dd') cai no fim e retorna None."
+ARW-T040,arrow/locales.py,get_locale_by_class_name,70-75,OUTRO,sim,Função pública get_locale_by_class_name nunca chamada internamente nem pelos testes.
+ARW-T041,arrow/locales.py,Locale.__init_subclass__,122,VAL,sim,Rejeita definição de subclasse de Locale com nome de localidade duplicado.
+ARW-T042,arrow/locales.py,Locale.meridian,257,VAL,sim,meridian retorna None para token diferente de 'a'/'A' (só via chamada direta ao Locale).
+ARW-T043,arrow/locales.py,Locale._ordinal_number,267,CFG,sim,Ordinal padrão usado por localidades que não sobrescrevem _ordinal_number.
+ARW-T044,arrow/locales.py,EnglishLocale.describe,400,CFG,sim,Depende da flag only_distance com timeframe 'now' na localidade inglesa.
+ARW-T045,arrow/locales.py,ItalianLocale._ordinal_number,475,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T046,arrow/locales.py,SpanishLocale._ordinal_number,550,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T047,arrow/locales.py,FrenchBaseLocale._ordinal_number,609-611,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T048,arrow/locales.py,FinnishLocale._format_timeframe,935-943,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T049,arrow/locales.py,FinnishLocale._ordinal_number,946,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T050,arrow/locales.py,KoreanLocale._ordinal_number,1224-1239,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T051,arrow/locales.py,KoreanLocale._format_relative,1248-1250,LIM,sim,"Expressão especial de dias na localidade coreana, acionada só com timeframe day/days."
+ARW-T052,arrow/locales.py,KoreanLocale._format_relative,1252-1254,LIM,sim,"Expressão especial de anos na localidade coreana, acionada só com timeframe year/years."
+ARW-T053,arrow/locales.py,SlavicBaseLocale._format_timeframe,1334-1345,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T054,arrow/locales.py,GermanBaseLocale._ordinal_number,2107,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T055,arrow/locales.py,GermanBaseLocale.describe,2126-2130,CFG,sim,Ramo only_distance da localidade alemã (localidade + flag de customização).
+ARW-T056,arrow/locales.py,NorwegianLocale._ordinal_number,2229,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T057,arrow/locales.py,NewNorwegianLocale._ordinal_number,2300,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T058,arrow/locales.py,TagalogLocale._ordinal_number,2448,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T059,arrow/locales.py,ArabicLocale._format_timeframe,2745-2755,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T060,arrow/locales.py,IcelandicLocale._format_timeframe,2896-2910,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T061,arrow/locales.py,DanishLocale._ordinal_number,3048,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T062,arrow/locales.py,CzechLocale._format_timeframe,3297-3319,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T063,arrow/locales.py,SlovakLocale._format_timeframe,3428-3449,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T064,arrow/locales.py,HebrewLocale._format_timeframe,3605-3615,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T065,arrow/locales.py,HebrewLocale.describe_multi,3629-3645,CFG,sim,describe_multi específico da localidade hebraica.
+ARW-T066,arrow/locales.py,HungarianLocale._format_timeframe,3926-3934,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T067,arrow/locales.py,EsperantoLocale._ordinal_number,4006,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T068,arrow/locales.py,ThaiLocale.year_full,4082-4083,CFG,sim,Ano no calendário budista específico da localidade tailandesa.
+ARW-T069,arrow/locales.py,ThaiLocale.year_abbreviation,4087-4088,CFG,sim,Ano abreviado no calendário budista específico da localidade tailandesa.
+ARW-T070,arrow/locales.py,ThaiLocale._format_relative,4097-4106,CFG,sim,Formatação relativa específica da localidade tailandesa.
+ARW-T071,arrow/locales.py,LaotianLocale.year_full,4189-4190,CFG,sim,Ano no calendário budista específico da localidade laosiana.
+ARW-T072,arrow/locales.py,LaotianLocale.year_abbreviation,4194-4195,CFG,sim,Ano abreviado no calendário budista específico da localidade laosiana.
+ARW-T073,arrow/locales.py,LaotianLocale._format_relative,4204-4213,CFG,sim,Formatação relativa específica da localidade laosiana.
+ARW-T074,arrow/locales.py,BengaliLocale._ordinal_number,4284-4294,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T075,arrow/locales.py,EstonianLocale._format_timeframe,4716-4721,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T076,arrow/locales.py,CroatianLocale._format_timeframe,4968-4976,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T077,arrow/locales.py,MalteseLocale._format_timeframe,5299-5307,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T078,arrow/locales.py,OdiaLocale._ordinal_number,5466-5476,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T079,arrow/locales.py,SerbianLocale._format_timeframe,5559-5567,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T080,arrow/locales.py,LuxembourgishLocale._ordinal_number,5653,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T081,arrow/locales.py,LuxembourgishLocale.describe,5661-5669,CFG,sim,describe específico da localidade luxemburguesa (only_distance).
+ARW-T082,arrow/locales.py,ZuluLocale._format_timeframe,5700-5712,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T083,arrow/locales.py,TamilLocale._ordinal_number,5848-5853,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T084,arrow/locales.py,SinhalaLocale._format_timeframe,6094-6106,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T085,arrow/locales.py,SinhalaLocale.describe,6121-6126,CFG,sim,describe específico da localidade cingalesa (only_distance).
+ARW-T086,arrow/locales.py,AmharicLocale._ordinal_number,6460,CFG,sim,Ordinal específico de uma localidade não exercitada (token Do).
+ARW-T087,arrow/locales.py,AmharicLocale._format_timeframe,6467-6479,CFG,sim,Formatação de timeframe específica de uma localidade não exercitada.
+ARW-T088,arrow/locales.py,AmharicLocale.describe,6494-6498,CFG,sim,describe específico da localidade amárica (only_distance).
+ARW-T089,arrow/locales.py,Locale.describe_multi,163->165,CFG,sim,Depende da localidade não definir and_word em humanize com lista de granularidades.
+ARW-T090,arrow/locales.py,Locale.describe_multi,171->177,LIM,sim,Todas as unidades com valor truncado zero; laço termina sem break.
+ARW-T091,arrow/locales.py,Locale.describe_multi,172->171,LIM,sim,Primeira unidade com valor truncado zero; continua buscando a próxima.
+ARW-T092,arrow/locales.py,Locale.month_number,224->230,LIM,sim,Segunda consulta de nome de mês reutiliza o mapeamento já em cache na localidade.
+ARW-T093,arrow/parser.py,<módulo>,28-29,CFG,nao,Import alternativo backports.zoneinfo só em Python sem zoneinfo (< 3.9).
+ARW-T094,arrow/parser.py,DateTimeParser.__init__,246,CFG,sim,Depende do parâmetro de configuração cache_size > 0 do DateTimeParser.
+ARW-T095,arrow/parser.py,DateTimeParser.parse_iso,312,LIM,sim,String ISO com espaço separando data e hora.
+ARW-T096,arrow/parser.py,DateTimeParser.parse_iso,323,VAL,sim,Rejeita componente de hora ISO malformado.
+ARW-T097,arrow/parser.py,DateTimeParser.parse_iso,359,LIM,sim,String ISO com hora sem minutos (apenas HH).
+ARW-T098,arrow/parser.py,DateTimeParser.parse_iso,362,LIM,sim,Monta formatos com separador espaço para ISO com hora.
+ARW-T099,arrow/parser.py,DateTimeParser.parse,410-411,EXC,sim,Captura re.error na geração do padrão (ex.: token repetido) e relança ParserMatchError.
+ARW-T100,arrow/parser.py,DateTimeParser.parse,426,LIM,sim,Parse com token particular Do (dia ordinal).
+ARW-T101,arrow/parser.py,DateTimeParser.parse,433,MORTO,nao,Grupos de captura dos tokens são obrigatórios no padrão; após match bem-sucedido nunca são None.
+ARW-T102,arrow/parser.py,DateTimeParser._generate_pattern_re,476-477,EXC,sim,Captura KeyError para token não mapeado (ex.: 'YYY') e relança ParserError.
+ARW-T103,arrow/parser.py,DateTimeParser._parse_token,632,LIM,sim,Parse com token particular Do atribui o dia.
+ARW-T104,arrow/parser.py,DateTimeParser._parse_token,636-639,LIM,sim,Parse com token particular dddd (nome do dia da semana).
+ARW-T105,arrow/parser.py,DateTimeParser._parse_token,668,LIM,sim,Arredondamento para cima quando o sétimo dígito fracionário é maior que 5.
+ARW-T106,arrow/parser.py,DateTimeParser._parse_token,687,VAL,sim,Rejeita hora > 12 combinada com indicador AM.
+ARW-T107,arrow/parser.py,DateTimeParser._build_datetime,744,VAL,sim,Rejeita DDD/DDDD sem componente de ano.
+ARW-T108,arrow/parser.py,DateTimeParser._build_datetime,749,VAL,sim,Rejeita DDD/DDDD combinado com mês.
+ARW-T109,arrow/parser.py,DateTimeParser._build_datetime,756-757,EXC,sim,Captura ValueError do strptime para dia do ano inválido e relança ParserError.
+ARW-T110,arrow/parser.py,DateTimeParser._build_datetime,770-781,LIM,sim,Dia da semana sem dia explícito resolve para o próximo dia correspondente.
+ARW-T111,arrow/parser.py,DateTimeParser._build_datetime,794,VAL,sim,Rejeita hora 24 com minutos diferentes de zero.
+ARW-T112,arrow/parser.py,DateTimeParser._build_datetime,796,VAL,sim,Rejeita hora 24 com segundos diferentes de zero.
+ARW-T113,arrow/parser.py,DateTimeParser._build_datetime,798,VAL,sim,Rejeita hora 24 com microssegundos diferentes de zero.
+ARW-T114,arrow/parser.py,DateTimeParser._parse_multiformat,856-857,VAL,sim,Rejeita entrada que não casa com nenhum dos formatos fornecidos.
+ARW-T115,arrow/parser.py,DateTimeParser._parse_token,690->-591,MORTO,nao,"Regex de a/A só aceita os valores de meridiano da localidade, então valor fora de am/pm nunca chega."
+ARW-T116,arrow/parser.py,DateTimeParser._parse_token,692->-591,LIM,sim,Token 'd' (dia ISO da semana) é casado mas não tratado em _parse_token e sai sem efeito.
+ARW-T117,arrow/parser.py,DateTimeParser._parse_multiformat,848->855,VAL,sim,"Laço de formatos termina sem sucesso, levando à rejeição da entrada."
+ARW-T118,arrow/util.py,next_weekday,40-42,LIM,sim,Helper next_weekday só chamado no parse de dia da semana sem dia; inclui guarda de faixa.
+ARW-T119,arrow/util.py,is_timestamp,51,VAL,sim,Rejeita bool como timestamp.
+ARW-T120,arrow/util.py,validate_ordinal,70,VAL,sim,Rejeita ordinal gregoriano fora da faixa.
+ARW-T121,arrow/util.py,normalize_timestamp,81,VAL,sim,Rejeita timestamp grande demais.
+ARW-T122,arrow/util.py,iso_to_gregorian,96,VAL,sim,Rejeita semana ISO fora de 1-53.
+ARW-T123,arrow/util.py,iso_to_gregorian,99,VAL,sim,Rejeita dia ISO fora de 1-7.

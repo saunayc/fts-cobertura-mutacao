@@ -1,0 +1,35 @@
+id,modulo,escopo,linhas,categoria,alcancavel,justificativa
+TDB-T001,tinydb/database.py,TinyDB.drop_table,192,LIM,sim,Retorno antecipado quando o banco ainda não foi inicializado (storage vazio) ao remover tabela.
+TDB-T002,tinydb/database.py,TinyDB.drop_table,196,LIM,sim,Retorno antecipado quando a tabela a remover não existe nos dados persistidos.
+TDB-T003,tinydb/database.py,TinyDB.drop_table,185->188,LIM,sim,Desvio para tabela que nunca foi aberta nesta instância antes de ser removida.
+TDB-T004,tinydb/database.py,TinyDB.__exit__,248->-244,LIM,sim,Saída do contexto quando o banco já foi fechado explicitamente dentro do with.
+TDB-T005,tinydb/middlewares.py,Middleware.__getattr__,73,LIM,sim,"Encaminhamento de atributo desconhecido ao storage subjacente, só acionado ao acessar atributo do storage via middleware."
+TDB-T006,tinydb/queries.py,QueryInstance.__init__,78-81,EXC,sim,except TypeError que trata hashval não hasheável (ex.: bytearray na query) tornando a query não cacheável.
+TDB-T007,tinydb/queries.py,QueryInstance.__eq__,109,VAL,sim,__eq__ rejeita comparação com objeto que não é QueryInstance retornando False.
+TDB-T008,tinydb/queries.py,QueryInstance.__and__,120,LIM,sim,Combinação AND envolvendo query não cacheável gera hash None.
+TDB-T009,tinydb/queries.py,QueryInstance.__or__,130,LIM,sim,Combinação OR envolvendo query não cacheável gera hash None.
+TDB-T010,tinydb/queries.py,Query._generate_test,230,VAL,sim,Rejeita query sem caminho (ex.: Query() == 1) com ValueError.
+TDB-T011,tinydb/queries.py,Query.matches.test,351,LIM,sim,matches() com valor do documento não-string retorna False.
+TDB-T012,tinydb/queries.py,Query.search.test,370,LIM,sim,search() com valor do documento não-string retorna False.
+TDB-T013,tinydb/storages.py,Storage.read,57,MORTO,nao,Corpo de método abstrato que lança NotImplementedError.
+TDB-T014,tinydb/storages.py,Storage.write,69,MORTO,nao,Corpo de método abstrato que lança NotImplementedError.
+TDB-T015,tinydb/storages.py,JSONStorage.__init__,109,VAL,sim,"Aviso defensivo quando access_mode informado não é um modo seguro (r, rb, r+, rb+)."
+TDB-T016,tinydb/storages.py,touch,27->32,LIM,sim,"Com create_dirs=True, diretório pai já existente ou caminho sem diretório pula a criação."
+TDB-T017,tinydb/table.py,Table.__init__,112,CFG,sim,Depende do parâmetro de configuração persist_empty=True da tabela.
+TDB-T018,tinydb/table.py,Table.insert,147,VAL,sim,Rejeita documento que não é Mapping em insert.
+TDB-T019,tinydb/table.py,Table.insert_multiple.updater,191,VAL,sim,Rejeita documento que não é Mapping em insert_multiple.
+TDB-T020,tinydb/table.py,Table.get,378,VAL,sim,"Rejeita chamada de get sem cond, doc_id nem doc_ids."
+TDB-T021,tinydb/table.py,Table.contains,402,VAL,sim,Rejeita chamada de contains sem cond nem doc_id.
+TDB-T022,tinydb/table.py,Table.remove,673,VAL,sim,"Rejeita remove sem argumentos, orientando usar truncate()."
+TDB-T023,tinydb/utils.py,LRUCache.lru,59,OUTRO,sim,Propriedade pública de LRUCache (tinydb.utils) não usada internamente; só exercitável usando a classe diretamente.
+TDB-T024,tinydb/utils.py,LRUCache.__len__,69,OUTRO,sim,Método da interface de mapeamento do LRUCache não usado pela TinyDB; só via uso direto da classe utilitária.
+TDB-T025,tinydb/utils.py,LRUCache.__contains__,72,OUTRO,sim,Método da interface de mapeamento do LRUCache não usado pela TinyDB; só via uso direto da classe utilitária.
+TDB-T026,tinydb/utils.py,LRUCache.__delitem__,78,OUTRO,sim,Método da interface de mapeamento do LRUCache não usado pela TinyDB; só via uso direto da classe utilitária.
+TDB-T027,tinydb/utils.py,LRUCache.__getitem__,81-85,OUTRO,sim,Método da interface de mapeamento do LRUCache não usado pela TinyDB; só via uso direto da classe utilitária.
+TDB-T028,tinydb/utils.py,LRUCache.__iter__,88,OUTRO,sim,Método da interface de mapeamento do LRUCache não usado pela TinyDB; só via uso direto da classe utilitária.
+TDB-T029,tinydb/utils.py,LRUCache.set,102-103,LIM,sim,Atualização de chave já presente no cache LRU (Table só grava chaves ausentes; exige uso direto do LRUCache).
+TDB-T030,tinydb/utils.py,FrozenDict._immutable,128,VAL,sim,Bloqueia mutação de FrozenDict (obtido via tinydb.utils.freeze) lançando TypeError.
+TDB-T031,tinydb/utils.py,FrozenDict.update,138,VAL,sim,Bloqueia update em FrozenDict lançando TypeError.
+TDB-T032,tinydb/utils.py,FrozenDict.pop,141,VAL,sim,Bloqueia pop em FrozenDict lançando TypeError.
+TDB-T033,tinydb/utils.py,freeze,157,LIM,sim,"Congelamento de argumento do tipo tupla (ex.: Query().f == (1, [2]) ou test com args tupla)."
+TDB-T034,tinydb/utils.py,freeze,160,LIM,sim,"Congelamento de argumento do tipo set (ex.: Query().f == {1, 2})."

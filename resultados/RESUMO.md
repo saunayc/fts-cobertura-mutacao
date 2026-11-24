@@ -31,9 +31,21 @@ Métricas por módulo: `resultados/qp1_modulos.csv`.
 - arrow: 33/123 = 26.8%
 - humanize: 14/40 = 35.0%
 
-> Classificação de um único avaliador (A). O Kappa de Cohen só pode ser calculado depois que o
-> Avaliador B preencher `classificacao/avaliador_B_EM_BRANCO_<lib>.csv` (renomeado para
-> `avaliador_B_<lib>.csv`) e rodar `python scripts/kappa.py --todas`.
+### Concordância entre avaliadores (antes da resolução de divergências)
+
+Avaliador A e Avaliador B são duas instâncias de IA (Claude) que classificaram de forma independente;
+B trabalhou numa pasta isolada, só com o livro de códigos, os trechos e o código-fonte, sem acesso à classificação A.
+
+| Biblioteca | n | Concordância observada | Kappa de Cohen | Interpretação (Landis & Koch) |
+|---|---:|---:|---:|---|
+| tinydb | 34 | 79.4% | 0.726 | substancial |
+| arrow | 123 | 91.1% | 0.873 | quase perfeita |
+| humanize | 40 | 97.5% | 0.962 | quase perfeita |
+| **todas** | 197 | 90.4% | 0.871 | quase perfeita |
+
+Distribuição segundo o Avaliador B: Tratamento de exceções 7, Validação defensiva 53, Configuração/ambiente 53, Casos-limite internos 67, Código morto 8, Outro 9. Exceções + validações = 60/197 = 30.5% — hipótese também não sustentada pelo Avaliador B.
+
+Matriz de confusão e lista de divergências: `python scripts/kappa.py --todas` e `classificacao/divergencias_todas.csv` (coluna `consenso` a preencher na reunião).
 
 ## QP3 — Ganho com testes estruturais direcionados
 
