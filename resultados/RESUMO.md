@@ -92,3 +92,46 @@ Matriz de confusão e lista de divergências: `python scripts/kappa.py --todas` 
 | humanize | HUM-T039 | humanize/time.py | 655->674 | MORTO | previsto (inalcançável) |
 | humanize | HUM-T040 | humanize/time.py | 663->665 | MORTO | previsto (inalcançável) |
 | humanize | (novo) | humanize/time.py | 206->256 |  | desvio parcial revelado na fase final |
+
+## Análises complementares (definidas após a coleta)
+
+Estas análises não estavam no plano original. Foram definidas depois de ver os dados e devem ser
+apresentadas como exploratórias / de sensibilidade.
+
+### Onde sobrevivem os mutantes
+
+Cada mutante foi localizado no comando que altera (`scripts/mutant_lines.py`). Sobreviventes incluem os mutantes sem teste.
+
+| Biblioteca | Fase | Sobreviventes | Em comando executado | Em comando não executado | Valor padrão na assinatura | Não identificado |
+|---|---|---:|---:|---:|---:|---:|
+| tinydb | inicial | 267 | 196 (73%) | 68 (25%) | 1 | 2 |
+| tinydb | final | 224 | 213 (95%) | 9 (4%) | 0 | 2 |
+| arrow | inicial | 1299 | 559 (43%) | 716 (55%) | 21 | 3 |
+| arrow | final | 974 | 943 (97%) | 9 (1%) | 20 | 2 |
+| humanize | inicial | 430 | 187 (43%) | 233 (54%) | 7 | 3 |
+| humanize | final | 215 | 197 (92%) | 8 (4%) | 7 | 3 |
+
+Na fase final, praticamente todo mutante que sobrevive está num comando que a suíte executa: o limite passou a ser a força dos oráculos (asserções), não a cobertura.
+
+### Arrow com e sem `locales.py`
+
+| Recorte | Fase | Comandos | Desvios | Escore de mutação | Mutantes |
+|---|---|---:|---:|---:|---:|
+| com locales.py | inicial | 86.2% | 69.5% | 63.0% | 3510 |
+| com locales.py | final | 99.6% | 98.8% | 72.3% | 3510 |
+| sem locales.py | inicial | 93.0% | 87.4% | 73.7% | 2824 |
+| sem locales.py | final | 99.3% | 98.6% | 80.2% | 2824 |
+
+### Hipótese sob diferentes ponderações
+
+Participação de exceções + validações (EXC+VAL) no código não coberto pela suíte funcional.
+
+| Ponderação | Avaliador A | Avaliador B |
+|---|---:|---:|
+| Contagem de trechos | 29.4% | 30.5% |
+| Ponderado por comandos | 18.5% | 18.5% |
+| Ponderado por mutantes | 12.6% | 12.5% |
+| Contagem, sem `arrow/locales.py` | 39.6% | 40.3% |
+| Por comandos, sem `arrow/locales.py` | 40.5% | 40.0% |
+
+Em nenhuma ponderação EXC+VAL passa de 50%; a hipótese não se sustenta em nenhum recorte.

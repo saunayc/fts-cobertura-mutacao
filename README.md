@@ -25,6 +25,7 @@ for lib in tinydb arrow humanize; do
   python3 scripts/measure.py $lib final    # QP3: suíte funcional + estrutural
 done
 
+python3 scripts/mutant_lines.py            # localiza a linha de cada mutante e cruza com a cobertura
 python3 scripts/analyze.py                 # consolida tudo em resultados/
 ```
 
@@ -44,7 +45,8 @@ A medição com mutação leva poucos minutos para TinyDB e Humanize e algo em t
 | `classificacao/avaliador_A_<lib>.csv` | classificação do avaliador A |
 | `classificacao/avaliador_B_EM_BRANCO_<lib>.csv` | planilha em branco para o segundo avaliador |
 | `resultados/inicial/<lib>/`, `resultados/final/<lib>/` | relatórios brutos: `coverage.json`, `modulos.csv`, `projeto.json`, `mutantes.csv`, saída do pytest |
-| `resultados/RESUMO.md` e `resultados/qp*.csv` | tabelas consolidadas para o artigo |
+| `resultados/RESUMO.md` e `resultados/qp*.csv` | tabelas consolidadas para o artigo, incluindo as análises complementares (onde sobrevivem os mutantes, Arrow com e sem localidades, hipótese sob diferentes ponderações) |
+| `resultados/<fase>/<lib>/mutantes_linhas.csv` | cada mutante com a linha que altera e se o comando foi executado naquela fase |
 | `scripts/` | todo o pipeline (preparação, medição, extração, Kappa, análise) |
 
 ## Sobre os avaliadores da QP2

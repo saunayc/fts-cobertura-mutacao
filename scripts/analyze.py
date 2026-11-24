@@ -81,6 +81,95 @@ def ainda_nao_coberto(trecho, cov) -> bool:
     return [o, d] in f["missing_branches"]
 
 
+def complementares(libs) -> list[str]:
+    """Análises decididas depois da coleta (declaradas como tal no artigo)."""
+    md = ["## Análises complementares (definidas após a coleta)", "",
+          "Estas análises não estavam no plano original. Foram definidas depois de ver os dados e devem ser",
+          "apresentadas como exploratórias / de sensibilidade.", ""]
+
+    # 1. Onde estão os mutantes sobreviventes
+    arq = RES / "qp_mutantes_sobreviventes.csv"
+    if arq.exists():
+        md += ["### Onde sobrevivem os mutantes", "",
+               "Cada mutante foi localizado no comando que altera (`scripts/mutant_lines.py`). "
+               "Sobreviventes incluem os mutantes sem teste.", "",
+               "| Biblioteca | Fase | Sobreviventes | Em comando executado | Em comando não executado | Valor padrão na assinatura | Não identificado |",
+               "|---|---|---:|---:|---:|---:|---:|"]
+        for r in csv.DictReader(open(arq)):
+            n = int(r["sobreviventes"])
+            pc = lambda k: f"{r[k]} ({100 * int(r[k]) / n:.0f}%)"
+            md.append(f"| {r['biblioteca']} | {r['fase']} | {n} | {pc('em_comando_executado')} | "
+                      f"{pc('em_comando_nao_executado')} | {r['em_valor_padrao_assinatura']} | {r['nao_identificada']} |")
+        md += ["", "Na fase final, praticamente todo mutante que sobrevive está num comando que a suíte executa: "
+               "o limite passou a ser a força dos oráculos (asserções), não a cobertura.", ""]
+
+    # 2. Arrow sem locales.py
+    md += ["### Arrow com e sem `locales.py`", "",
+           "| Recorte | Fase | Comandos | Desvios | Escore de mutação | Mutantes |", "|---|---|---:|---:|---:|---:|"]
+    for recorte, filtro in (("com locales.py", lambda m: True), ("sem locales.py", lambda m: m != "arrow/locales.py")):
+        for fase in ("inicial", "final"):
+            rows = [r for r in csv.DictReader(open(RES / fase / "arrow" / "modulos.csv")) if filtro(r["modulo"])]
+            sm = lambda k: sum(int(r[k] or 0) for r in rows)
+            tot = sm("mutantes_total")
+            mortos = sm("mutantes_mortos")
+            md.append(f"| {recorte} | {fase} | {100 * sm('comandos_cobertos') / sm('comandos_total'):.1f}% | "
+                      f"{100 * sm('desvios_cobertos') / sm('desvios_total'):.1f}% | {100 * mortos / tot:.1f}% | {tot} |")
+    md.append("")
+
+    # 3. Hipótese sob ponderações diferentes
+    import sys
+    sys.path.insert(0, str(ROOT / "scripts"))
+    from kappa import carregar
+    md += ["### Hipótese sob diferentes ponderações", "",
+           "Participação de exceções + validações (EXC+VAL) no código não coberto pela suíte funcional.", "",
+           "| Ponderação | Avaliador A | Avaliador B |", "|---|---:|---:|"]
+
+    def pesos(lib):
+        trechos = list(csv.DictReader(open(ROOT / "classificacao" / f"trechos_{lib}.csv")))
+        mut = list(csv.DictReader(open(RES / "inicial" / lib / "mutantes_linhas.csv")))
+        mut_por_linha = Counter((r["modulo"], int(r["linha"])) for r in mut if r["linha"])
+        out = {}
+        for t in trechos:
+            if t["tipo"] == "L":
+                a, _, b = t["linhas"].partition("-")
+                faixa = range(int(a), int(b or a) + 1)
+                nmut = sum(mut_por_linha[(t["modulo"], ln)] for ln in faixa)
+                ncmd = int(t["n_comandos"])
+            else:
+                o = int(t["linhas"].split("->")[0])
+                nmut, ncmd = mut_por_linha[(t["modulo"], o)], 1
+            out[t["id"]] = {"trecho": 1, "comandos": ncmd, "mutantes": nmut, "modulo": t["modulo"]}
+        return out
+
+    P = {}
+    for l in libs:
+        P.update(pesos(l))
+    aval = {}
+    for nome, padrao in (("A", "avaliador_A_{}.csv"), ("B", "avaliador_B_IA_{}.csv")):
+        d = {}
+        for l in libs:
+            arqv = ROOT / "classificacao" / padrao.format(l)
+            if arqv.exists():
+                d.update(carregar(arqv))
+        aval[nome] = d
+    linhas_hip = [("Contagem de trechos", "trecho", lambda i: True),
+                  ("Ponderado por comandos", "comandos", lambda i: True),
+                  ("Ponderado por mutantes", "mutantes", lambda i: True),
+                  ("Contagem, sem `arrow/locales.py`", "trecho", lambda i: P[i]["modulo"] != "arrow/locales.py"),
+                  ("Por comandos, sem `arrow/locales.py`", "comandos", lambda i: P[i]["modulo"] != "arrow/locales.py")]
+    for rot, peso, filtro in linhas_hip:
+        cel = []
+        for nome in ("A", "B"):
+            d = aval[nome]
+            ids = [i for i in d if filtro(i)]
+            tot = sum(P[i][peso] for i in ids)
+            ev = sum(P[i][peso] for i in ids if d[i] in ("EXC", "VAL"))
+            cel.append(f"{100 * ev / tot:.1f}%" if tot else "—")
+        md.append(f"| {rot} | {cel[0]} | {cel[1]} |")
+    md += ["", "Em nenhuma ponderação EXC+VAL passa de 50%; a hipótese não se sustenta em nenhum recorte.", ""]
+    return md
+
+
 def main():
     rast = rastreabilidade()
     md = ["# Resumo dos resultados", "",
@@ -221,6 +310,7 @@ def main():
     for r in resid:
         md.append(f"| {r['biblioteca']} | {r['id']} | {r['modulo']} | {r['linhas']} | {r['categoria_A']} | {r['situacao']} |")
     md.append("")
+    md += complementares(LIBS)
     (RES / "RESUMO.md").write_text("\n".join(md))
     print("\n".join(md))
 

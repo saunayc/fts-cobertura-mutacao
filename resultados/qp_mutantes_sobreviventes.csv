@@ -1,0 +1,7 @@
+biblioteca,fase,mutantes,sobreviventes,em_comando_executado,em_comando_nao_executado,em_valor_padrao_assinatura,nao_identificada
+tinydb,inicial,764,267,196,68,1,2
+tinydb,final,764,224,213,9,0,2
+arrow,inicial,3510,1299,559,716,21,3
+arrow,final,3510,974,943,9,20,2
+humanize,inicial,1348,430,187,233,7,3
+humanize,final,1348,215,197,8,7,3
